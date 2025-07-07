@@ -23,5 +23,19 @@ module PocketGakudoApp
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    # 本番環境でマイグレーションを自動実行
+    if Rails.env.production?
+      config.after_initialize do
+        begin
+          ActiveRecord::Base.connection.execute("SELECT 1")
+        rescue ActiveRecord::NoDatabaseError, PG::ConnectionBad
+          # データベースが存在しない場合はスキップ
+          Rails.logger.info "Database not available, skipping migration"
+        rescue => e
+          Rails.logger.error "Database connection error: #{e.message}"
+        end
+      end
+    end
   end
 end

@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: pocket-gakudo-app
+    runtime: ruby
+    buildCommand: bundle install && bundle exec rails db:migrate
+    startCommand: bundle exec puma -t 5:5 -p ${PORT:-3000} -e ${RACK_ENV:-development}
+    envVars:
+      - key: RAILS_ENV
+        value: production
+      - key: RACK_ENV
+        value: production 
