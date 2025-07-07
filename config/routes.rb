@@ -4,6 +4,10 @@ Rails.application.routes.draw do
   post "login", to: "sessions#create"
   delete "logout", to: "sessions#destroy", as: :logout
 
+  # 新規登録関連
+  get "signup", to: "users#new", as: :signup
+  post "signup", to: "users#create"
+
   # 保護者ページ
   get "parents/dashboard", to: "parents#dashboard", as: :parent_dashboard
   get "parents/attendances", to: "parents#attendances", as: :parent_attendances
