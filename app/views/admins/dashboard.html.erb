@@ -1,0 +1,171 @@
+<div class="min-h-screen bg-gray-100">
+  <div class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <div class="flex items-center">
+          <h1 class="text-xl font-semibold text-gray-900">
+            👨‍💼 管理者ダッシュボード
+          </h1>
+        </div>
+        <div class="flex items-center space-x-4">
+          <span class="text-gray-700"><%= @user_name %>さん</span>
+          <%= button_to "ログアウト", logout_path, method: :delete, class: "text-red-600 hover:text-red-800 bg-transparent border-none cursor-pointer" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+    <div class="px-4 py-6 sm:px-0">
+      <!-- 統計カード -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <div class="bg-white overflow-hidden shadow rounded-lg">
+          <div class="p-5">
+            <div class="flex items-center">
+              <div class="flex-shrink-0">
+                <div class="w-8 h-8 bg-blue-500 rounded-md flex items-center justify-center">
+                  <span class="text-white text-lg">📊</span>
+                </div>
+              </div>
+              <div class="ml-5 w-0 flex-1">
+                <dl>
+                  <dt class="text-sm font-medium text-gray-500 truncate">
+                    総連絡数
+                  </dt>
+                  <dd class="text-lg font-medium text-gray-900">
+                    <%= @total_attendances %>件
+                  </dd>
+                </dl>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white overflow-hidden shadow rounded-lg">
+          <div class="p-5">
+            <div class="flex items-center">
+              <div class="flex-shrink-0">
+                <div class="w-8 h-8 bg-green-500 rounded-md flex items-center justify-center">
+                  <span class="text-white text-lg">📅</span>
+                </div>
+              </div>
+              <div class="ml-5 w-0 flex-1">
+                <dl>
+                  <dt class="text-sm font-medium text-gray-500 truncate">
+                    今日の連絡
+                  </dt>
+                  <dd class="text-lg font-medium text-gray-900">
+                    <%= @today_attendances %>件
+                  </dd>
+                </dl>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 機能カード -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- 全員の出欠席一覧 -->
+        <div class="bg-white overflow-hidden shadow rounded-lg">
+          <div class="p-5">
+            <div class="flex items-center">
+              <div class="flex-shrink-0">
+                <div class="w-8 h-8 bg-purple-500 rounded-md flex items-center justify-center">
+                  <span class="text-white text-lg">📋</span>
+                </div>
+              </div>
+              <div class="ml-5 w-0 flex-1">
+                <dl>
+                  <dt class="text-sm font-medium text-gray-500 truncate">
+                    全員の出欠席一覧
+                  </dt>
+                  <dd class="text-lg font-medium text-gray-900">
+                    全保護者の連絡を確認
+                  </dd>
+                </dl>
+              </div>
+            </div>
+          </div>
+          <div class="bg-gray-50 px-5 py-3">
+            <%= link_to "一覧を見る", admin_all_attendances_path, class: "text-sm font-medium text-purple-600 hover:text-purple-500" %>
+          </div>
+        </div>
+
+        <!-- 今日の連絡 -->
+        <div class="bg-white overflow-hidden shadow rounded-lg">
+          <div class="p-5">
+            <div class="flex items-center">
+              <div class="flex-shrink-0">
+                <div class="w-8 h-8 bg-orange-500 rounded-md flex items-center justify-center">
+                  <span class="text-white text-lg">🔔</span>
+                </div>
+              </div>
+              <div class="ml-5 w-0 flex-1">
+                <dl>
+                  <dt class="text-sm font-medium text-gray-500 truncate">
+                    今日の連絡
+                  </dt>
+                  <dd class="text-lg font-medium text-gray-900">
+                    本日の出欠席状況
+                  </dd>
+                </dl>
+              </div>
+            </div>
+          </div>
+          <div class="bg-gray-50 px-5 py-3">
+            <%= link_to "今日の状況", admin_attendances_path(date: Date.current), class: "text-sm font-medium text-orange-600 hover:text-orange-500" %>
+          </div>
+        </div>
+      </div>
+
+      <!-- 最近の連絡 -->
+      <div class="mt-8">
+        <h2 class="text-lg font-medium text-gray-900 mb-4">最近の連絡</h2>
+        <div class="bg-white shadow overflow-hidden sm:rounded-md">
+          <ul class="divide-y divide-gray-200">
+            <% Attendance.order(created_at: :desc).limit(10).each do |attendance| %>
+              <li class="px-6 py-4">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                      <% case attendance.status %>
+                      <% when "出席" %>
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                          <%= attendance.status %>
+                        </span>
+                      <% when "欠席" %>
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                          <%= attendance.status %>
+                        </span>
+                      <% when "遅刻" %>
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
+                          <%= attendance.status %>
+                        </span>
+                      <% when "早退" %>
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-100 text-orange-800">
+                          <%= attendance.status %>
+                        </span>
+                      <% end %>
+                    </div>
+                    <div class="ml-4">
+                      <div class="text-sm font-medium text-gray-900">
+                        <%= attendance.child_name %> - <%= attendance.date&.strftime("%m月%d日") %>
+                      </div>
+                      <div class="text-sm text-gray-500">
+                        <%= attendance.message.presence || "メッセージなし" %>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="text-sm text-gray-500">
+                    <%= attendance.created_at.strftime("%m/%d %H:%M") %>
+                  </div>
+                </div>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
