@@ -18,8 +18,11 @@ Rails.application.routes.draw do
   get "admins/all_attendances", to: "admins#all_attendances", as: :admin_all_attendances
 
   # 出欠席連絡のルート（保護者用）
-  get "attendances/new", to: "attendances#new", as: :new_attendance
-  post "attendances", to: "attendances#create", as: :attendances
+  resources :attendances, except: [:show, :destroy] do
+    member do
+      patch :update_existing
+    end
+  end
   get "attendances", to: "attendances#index", as: :attendances_index
   
   # ルートページをログインページに変更

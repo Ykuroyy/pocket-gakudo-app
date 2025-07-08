@@ -7,6 +7,12 @@ class User < ApplicationRecord
     message: "パスワードは半角数字と半角英語の組み合わせで6桁で入力してください" 
   }
   validates :role, presence: { message: "役割を選択してください" }
+  validates :phone, presence: { message: "電話番号を入力してください" }
+  validates :email, presence: { message: "メールアドレスを入力してください" }
+  
+  # 保護者の場合、姓と名のバリデーション
+  validates :first_name, presence: { message: "名（カタカナ）を入力してください" }, if: :parent?
+  validates :last_name, presence: { message: "姓（カタカナ）を入力してください" }, if: :parent?
   
   # フルネームを取得
   def full_name

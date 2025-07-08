@@ -1,9 +1,21 @@
 <div class="container mx-auto px-4 py-8 max-w-4xl">
   <div class="bg-white rounded-lg shadow-lg p-6">
     <div class="flex justify-between items-center mb-6">
-      <h1 class="text-2xl font-bold text-gray-800">
-        📋 出欠席一覧
-      </h1>
+      <div class="flex items-center space-x-4">
+        <% if session[:user_role] == "admin" %>
+          <%= link_to "← 全児童一覧に戻る", admin_dashboard_path, class: "text-blue-600 hover:text-blue-800 font-medium" %>
+        <% elsif session[:user_role] == "parent" %>
+          <%= link_to "← ダッシュボードに戻る", parent_dashboard_path, class: "text-blue-600 hover:text-blue-800 font-medium" %>
+        <% else %>
+          <%= link_to "← 戻る", root_path, class: "text-blue-600 hover:text-blue-800 font-medium" %>
+        <% end %>
+        <h1 class="text-2xl font-bold text-gray-800">
+          📋 出欠席一覧
+          <% if @child_name.present? %>
+            <span class="text-lg font-normal text-gray-600">（<%= @child_name %>さん）</span>
+          <% end %>
+        </h1>
+      </div>
       <%= link_to "新規連絡", root_path, class: "bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700" %>
     </div>
 
@@ -17,6 +29,7 @@
               <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">状況</th>
               <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">メッセージ</th>
               <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">送信時刻</th>
+              <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">操作</th>
             </tr>
           </thead>
           <tbody class="bg-white divide-y divide-gray-200">
@@ -52,7 +65,11 @@
                   <%= attendance.message.presence || "-" %>
                 </td>
                 <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500">
-                  <%= attendance.created_at.strftime("%m/%d %H:%M") %>
+                  <%= format_japanese_time(attendance.created_at) %>
+                </td>
+                <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500">
+                  <%= link_to "内容を変更", edit_attendance_path(attendance), 
+                              class: "text-blue-600 hover:text-blue-800 font-medium" %>
                 </td>
               </tr>
             <% end %>

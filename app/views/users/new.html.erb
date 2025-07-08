@@ -31,13 +31,17 @@
               <div>
                 <%= form.label :last_name, "姓（カタカナ）", class: "block text-sm font-medium text-gray-700" %>
                 <%= form.text_field :last_name, class: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500", placeholder: "例：タナカ" %>
-                <!-- エラー表示は一時的に無効化 -->
+                <% if @user.errors[:last_name].any? %>
+                  <p class="mt-1 text-sm text-red-600"><%= @user.errors[:last_name].first %></p>
+                <% end %>
               </div>
               
               <div>
                 <%= form.label :first_name, "名（カタカナ）", class: "block text-sm font-medium text-gray-700" %>
                 <%= form.text_field :first_name, class: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500", placeholder: "例：ハナコ" %>
-                <!-- エラー表示は一時的に無効化 -->
+                <% if @user.errors[:first_name].any? %>
+                  <p class="mt-1 text-sm text-red-600"><%= @user.errors[:first_name].first %></p>
+                <% end %>
               </div>
             </div>
             
@@ -45,19 +49,25 @@
               <%= form.label :password, "パスワード", class: "block text-sm font-medium text-gray-700" %>
               <%= form.password_field :password, class: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500", placeholder: "パスワードを入力" %>
               <p class="mt-1 text-xs text-gray-500">※6桁の半角数字と半角英語の組み合わせ</p>
-              <!-- エラー表示は一時的に無効化 -->
+              <% if @user.errors[:password].any? %>
+                <p class="mt-1 text-sm text-red-600"><%= @user.errors[:password].first %></p>
+              <% end %>
             </div>
             
             <div>
               <%= form.label :phone, "電話番号", class: "block text-sm font-medium text-gray-700" %>
-              <%= form.telephone_field :phone, class: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500", placeholder: "例：090-1234-5678" %>
-              <!-- エラー表示は一時的に無効化 -->
+              <%= form.telephone_field :phone, class: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500", placeholder: "例：09012345678" %>
+              <% if @user.errors[:phone].any? %>
+                <p class="mt-1 text-sm text-red-600"><%= @user.errors[:phone].first %></p>
+              <% end %>
             </div>
             
             <div>
               <%= form.label :email, "メールアドレス", class: "block text-sm font-medium text-gray-700" %>
               <%= form.email_field :email, class: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500", placeholder: "例：example@email.com" %>
-              <!-- エラー表示は一時的に無効化 -->
+              <% if @user.errors[:email].any? %>
+                <p class="mt-1 text-sm text-red-600"><%= @user.errors[:email].first %></p>
+              <% end %>
             </div>
             
             <%= form.hidden_field :role, value: "parent" %>
@@ -84,26 +94,34 @@
             <div>
               <%= form.label :name, "管理者ID", class: "block text-sm font-medium text-gray-700" %>
               <%= form.text_field :name, class: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500", placeholder: "例：admin" %>
-              <!-- エラー表示は一時的に無効化 -->
+              <% if @user.errors[:name].any? %>
+                <p class="mt-1 text-sm text-red-600"><%= @user.errors[:name].first %></p>
+              <% end %>
             </div>
             
             <div>
               <%= form.label :password, "パスワード", class: "block text-sm font-medium text-gray-700" %>
               <%= form.password_field :password, class: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500", placeholder: "パスワードを入力" %>
               <p class="mt-1 text-xs text-gray-500">※6桁の半角数字と半角英語の組み合わせ</p>
-              <!-- エラー表示は一時的に無効化 -->
+              <% if @user.errors[:password].any? %>
+                <p class="mt-1 text-sm text-red-600"><%= @user.errors[:password].first %></p>
+              <% end %>
             </div>
             
             <div>
               <%= form.label :phone, "電話番号", class: "block text-sm font-medium text-gray-700" %>
-              <%= form.telephone_field :phone, class: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500", placeholder: "例：090-1234-5678" %>
-              <!-- エラー表示は一時的に無効化 -->
+              <%= form.telephone_field :phone, class: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500", placeholder: "例：09012345678" %>
+              <% if @user.errors[:phone].any? %>
+                <p class="mt-1 text-sm text-red-600"><%= @user.errors[:phone].first %></p>
+              <% end %>
             </div>
             
             <div>
               <%= form.label :email, "メールアドレス", class: "block text-sm font-medium text-gray-700" %>
               <%= form.email_field :email, class: "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500", placeholder: "例：example@email.com" %>
-              <!-- エラー表示は一時的に無効化 -->
+              <% if @user.errors[:email].any? %>
+                <p class="mt-1 text-sm text-red-600"><%= @user.errors[:email].first %></p>
+              <% end %>
             </div>
             
             <%= form.hidden_field :role, value: "admin" %>

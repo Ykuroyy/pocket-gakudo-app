@@ -1905,3 +1905,1826 @@ Processing by SessionsController#new as HTML
 Completed 200 OK in 22ms (Views: 2.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.5ms)
 
 
+Started GET "/" for ::1 at 2025-07-08 13:59:30 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='PocketGakudoApp'*/[0m
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 5.5ms | GC: 0.6ms)
+  Rendered layout layouts/application.html.erb (Duration: 9.8ms | GC: 1.0ms)
+Completed 200 OK in 41ms (Views: 11.0ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 1.3ms)
+
+
+Started POST "/login" for ::1 at 2025-07-08 13:59:43 +0900
+Processing by SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "last_name"=>"ヤマダ", "first_name"=>"ハナコ", "password"=>"[FILTERED]", "role"=>"parent", "commit"=>"保護者としてログイン"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."name" = 'ヤマダ ハナコ' LIMIT 1 /*action='create',application='PocketGakudoApp',controller='sessions'*/[0m
+  ↳ app/models/user.rb:22:in `authenticate'
+Redirected to http://localhost:3000/parents/dashboard
+Completed 302 Found in 40ms (ActiveRecord: 1.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/parents/dashboard" for ::1 at 2025-07-08 13:59:43 +0900
+Processing by ParentsController#dashboard as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering parents/dashboard.html.erb within layouts/application
+  [1m[36mAttendance Load (0.2ms)[0m  [1m[34mSELECT "attendances".* FROM "attendances" WHERE "attendances"."child_name" = 'ヤマダ ハナコの子供' ORDER BY "attendances"."created_at" DESC LIMIT 5 /*action='dashboard',application='PocketGakudoApp',controller='parents'*/[0m
+  ↳ app/views/parents/dashboard.html.erb:79
+  Rendered parents/dashboard.html.erb within layouts/application (Duration: 2.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.6ms | GC: 0.0ms)
+Completed 200 OK in 19ms (Views: 2.6ms | ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/parents/attendances" for ::1 at 2025-07-08 13:59:46 +0900
+Processing by ParentsController#attendances as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering parents/attendances.html.erb within layouts/application
+  [1m[36mAttendance Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "attendances" WHERE "attendances"."child_name" = 'ヤマダ ハナコの子供' LIMIT 1 /*action='attendances',application='PocketGakudoApp',controller='parents'*/[0m
+  ↳ app/views/parents/attendances.html.erb:35
+  Rendered parents/attendances.html.erb within layouts/application (Duration: 1.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.9ms | GC: 0.0ms)
+Completed 200 OK in 33ms (Views: 2.0ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/attendances/new" for ::1 at 2025-07-08 13:59:47 +0900
+Processing by AttendancesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering attendances/new.html.erb within layouts/application
+  Rendered attendances/new.html.erb within layouts/application (Duration: 3.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.7ms | GC: 0.0ms)
+Completed 200 OK in 34ms (Views: 4.1ms | ActiveRecord: 0.1ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/parents/dashboard" for ::1 at 2025-07-08 13:59:48 +0900
+Processing by ParentsController#dashboard as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering parents/dashboard.html.erb within layouts/application
+  [1m[36mAttendance Load (0.1ms)[0m  [1m[34mSELECT "attendances".* FROM "attendances" WHERE "attendances"."child_name" = 'ヤマダ ハナコの子供' ORDER BY "attendances"."created_at" DESC LIMIT 5 /*action='dashboard',application='PocketGakudoApp',controller='parents'*/[0m
+  ↳ app/views/parents/dashboard.html.erb:79
+  Rendered parents/dashboard.html.erb within layouts/application (Duration: 1.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.5ms | GC: 0.0ms)
+Completed 200 OK in 31ms (Views: 1.6ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/parents/dashboard" for ::1 at 2025-07-08 13:59:49 +0900
+Processing by ParentsController#dashboard as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering parents/dashboard.html.erb within layouts/application
+  [1m[36mAttendance Load (0.1ms)[0m  [1m[34mSELECT "attendances".* FROM "attendances" WHERE "attendances"."child_name" = 'ヤマダ ハナコの子供' ORDER BY "attendances"."created_at" DESC LIMIT 5 /*action='dashboard',application='PocketGakudoApp',controller='parents'*/[0m
+  ↳ app/views/parents/dashboard.html.erb:79
+  Rendered parents/dashboard.html.erb within layouts/application (Duration: 0.9ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.2ms | GC: 0.0ms)
+Completed 200 OK in 27ms (Views: 1.2ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/attendances/new" for ::1 at 2025-07-08 13:59:51 +0900
+Processing by AttendancesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering attendances/new.html.erb within layouts/application
+  Rendered attendances/new.html.erb within layouts/application (Duration: 1.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.8ms | GC: 0.0ms)
+Completed 200 OK in 30ms (Views: 2.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/attendances" for ::1 at 2025-07-08 14:00:19 +0900
+Processing by AttendancesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "attendance"=>{"child_last_name"=>"ヤマダ", "child_first_name"=>"ジロウ", "date"=>"2025-07-08", "status"=>"欠席", "message"=>"発熱のため欠席します"}, "commit"=>"送信する"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='create',application='PocketGakudoApp',controller='attendances'*/[0m
+  ↳ app/controllers/attendances_controller.rb:14:in `create'
+  [1m[36mAttendance Create (1.4ms)[0m  [1m[32mINSERT INTO "attendances" ("child_name", "status", "date", "message", "created_at", "updated_at", "child_first_name", "child_last_name") VALUES ('ヤマダ ジロウ', '欠席', '2025-07-08', '発熱のため欠席します', '2025-07-08 05:00:19.184148', '2025-07-08 05:00:19.184148', 'ジロウ', 'ヤマダ') RETURNING "id" /*action='create',application='PocketGakudoApp',controller='attendances'*/[0m
+  ↳ app/controllers/attendances_controller.rb:14:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='create',application='PocketGakudoApp',controller='attendances'*/[0m
+  ↳ app/controllers/attendances_controller.rb:14:in `create'
+Redirected to http://localhost:3000/attendances?child_name=%E3%83%A4%E3%83%9E%E3%83%80+%E3%82%B8%E3%83%AD%E3%82%A6
+Completed 302 Found in 32ms (ActiveRecord: 1.6ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/attendances?child_name=%E3%83%A4%E3%83%9E%E3%83%80+%E3%82%B8%E3%83%AD%E3%82%A6" for ::1 at 2025-07-08 14:00:19 +0900
+Processing by AttendancesController#index as TURBO_STREAM
+  Parameters: {"child_name"=>"ヤマダ ジロウ"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 3 LIMIT 1 /*action='index',application='PocketGakudoApp',controller='attendances'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering attendances/index.html.erb within layouts/application
+  [1m[36mAttendance Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "attendances" WHERE "attendances"."child_name" = 'ヤマダ ハナコ' LIMIT 1 /*action='index',application='PocketGakudoApp',controller='attendances'*/[0m
+  ↳ app/views/attendances/index.html.erb:10
+  Rendered attendances/index.html.erb within layouts/application (Duration: 0.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 0.9ms | GC: 0.0ms)
+Completed 200 OK in 20ms (Views: 1.0ms | ActiveRecord: 0.1ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for ::1 at 2025-07-08 14:00:20 +0900
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.7ms | GC: 0.0ms)
+Completed 200 OK in 28ms (Views: 1.9ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for ::1 at 2025-07-08 14:00:21 +0900
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.7ms | GC: 0.5ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.0ms | GC: 0.5ms)
+Completed 200 OK in 25ms (Views: 2.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.5ms)
+
+
+Started POST "/login" for ::1 at 2025-07-08 14:00:31 +0900
+Processing by SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "name"=>"admin", "password"=>"[FILTERED]", "role"=>"admin", "commit"=>"管理者としてログイン"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."name" = 'admin' LIMIT 1 /*action='create',application='PocketGakudoApp',controller='sessions'*/[0m
+  ↳ app/models/user.rb:22:in `authenticate'
+Redirected to http://localhost:3000/admins/dashboard
+Completed 302 Found in 31ms (ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 1.1ms)
+
+
+Started GET "/admins/dashboard" for ::1 at 2025-07-08 14:00:31 +0900
+Processing by AdminsController#dashboard as TURBO_STREAM
+  [1m[36mAttendance Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "attendances" /*action='dashboard',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/controllers/admins_controller.rb:6:in `dashboard'
+  [1m[36mAttendance Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "attendances" WHERE "attendances"."date" = '2025-07-08' /*action='dashboard',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/controllers/admins_controller.rb:7:in `dashboard'
+  Rendering layout layouts/application.html.erb
+  Rendering admins/dashboard.html.erb within layouts/application
+  [1m[36mAttendance Load (0.1ms)[0m  [1m[34mSELECT "attendances".* FROM "attendances" ORDER BY "attendances"."created_at" DESC LIMIT 10 /*action='dashboard',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/views/admins/dashboard.html.erb:127
+  Rendered admins/dashboard.html.erb within layouts/application (Duration: 1.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.4ms | GC: 0.1ms)
+Completed 200 OK in 20ms (Views: 1.6ms | ActiveRecord: 0.4ms (3 queries, 0 cached) | GC: 0.3ms)
+
+
+Started GET "/admins/all_attendances" for ::1 at 2025-07-08 14:00:39 +0900
+Processing by AdminsController#all_attendances as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering admins/all_attendances.html.erb within layouts/application
+  [1m[36mAttendance Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "attendances" LIMIT 1 /*action='all_attendances',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/views/admins/all_attendances.html.erb:35
+  [1m[36mAttendance Load (0.3ms)[0m  [1m[34mSELECT "attendances".* FROM "attendances" ORDER BY "attendances"."created_at" DESC /*action='all_attendances',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/views/admins/all_attendances.html.erb:65
+  [1m[36mAttendance Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "attendances" WHERE "attendances"."status" = '出席' /*action='all_attendances',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/views/admins/all_attendances.html.erb:132
+  [1m[36mAttendance Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "attendances" WHERE "attendances"."status" = '欠席' /*action='all_attendances',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/views/admins/all_attendances.html.erb:152
+  [1m[36mAttendance Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "attendances" WHERE "attendances"."status" = '遅刻' /*action='all_attendances',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/views/admins/all_attendances.html.erb:172
+  [1m[36mAttendance Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "attendances" WHERE "attendances"."status" = '早退' /*action='all_attendances',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/views/admins/all_attendances.html.erb:192
+  Rendered admins/all_attendances.html.erb within layouts/application (Duration: 3.3ms | GC: 0.2ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.6ms | GC: 0.2ms)
+Completed 200 OK in 33ms (Views: 3.3ms | ActiveRecord: 0.4ms (6 queries, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/admins/dashboard" for ::1 at 2025-07-08 14:00:42 +0900
+Processing by AdminsController#dashboard as HTML
+  [1m[36mAttendance Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "attendances" /*action='dashboard',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/controllers/admins_controller.rb:6:in `dashboard'
+  [1m[36mAttendance Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "attendances" WHERE "attendances"."date" = '2025-07-08' /*action='dashboard',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/controllers/admins_controller.rb:7:in `dashboard'
+  Rendering layout layouts/application.html.erb
+  Rendering admins/dashboard.html.erb within layouts/application
+  [1m[36mAttendance Load (0.1ms)[0m  [1m[34mSELECT "attendances".* FROM "attendances" ORDER BY "attendances"."created_at" DESC LIMIT 10 /*action='dashboard',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/views/admins/dashboard.html.erb:127
+  Rendered admins/dashboard.html.erb within layouts/application (Duration: 1.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.4ms | GC: 0.0ms)
+Completed 200 OK in 33ms (Views: 1.6ms | ActiveRecord: 0.2ms (3 queries, 0 cached) | GC: 0.4ms)
+
+
+Started GET "/admins/attendances" for ::1 at 2025-07-08 14:00:42 +0900
+Processing by AdminsController#attendances as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering admins/attendances.html.erb within layouts/application
+  [1m[36mAttendance Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "attendances" WHERE "attendances"."date" = '2025-07-08' LIMIT 1 /*action='attendances',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/views/admins/attendances.html.erb:32
+  [1m[36mAttendance Load (0.1ms)[0m  [1m[34mSELECT "attendances".* FROM "attendances" WHERE "attendances"."date" = '2025-07-08' ORDER BY "attendances"."created_at" DESC /*action='attendances',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/views/admins/attendances.html.erb:56
+  [1m[36mAttendance Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "attendances" WHERE "attendances"."date" = '2025-07-08' AND "attendances"."status" = '出席' /*action='attendances',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/views/admins/attendances.html.erb:111
+  [1m[36mAttendance Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "attendances" WHERE "attendances"."date" = '2025-07-08' AND "attendances"."status" = '欠席' /*action='attendances',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/views/admins/attendances.html.erb:131
+  [1m[36mAttendance Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "attendances" WHERE "attendances"."date" = '2025-07-08' AND "attendances"."status" = '遅刻' /*action='attendances',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/views/admins/attendances.html.erb:151
+  [1m[36mAttendance Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "attendances" WHERE "attendances"."date" = '2025-07-08' AND "attendances"."status" = '早退' /*action='attendances',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/views/admins/attendances.html.erb:171
+  Rendered admins/attendances.html.erb within layouts/application (Duration: 3.6ms | GC: 0.5ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.9ms | GC: 0.5ms)
+Completed 200 OK in 32ms (Views: 3.9ms | ActiveRecord: 0.2ms (6 queries, 0 cached) | GC: 0.5ms)
+
+
+Started GET "/admins/dashboard" for ::1 at 2025-07-08 14:00:44 +0900
+Processing by AdminsController#dashboard as HTML
+  [1m[36mAttendance Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "attendances" /*action='dashboard',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/controllers/admins_controller.rb:6:in `dashboard'
+  [1m[36mAttendance Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "attendances" WHERE "attendances"."date" = '2025-07-08' /*action='dashboard',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/controllers/admins_controller.rb:7:in `dashboard'
+  Rendering layout layouts/application.html.erb
+  Rendering admins/dashboard.html.erb within layouts/application
+  [1m[36mAttendance Load (0.1ms)[0m  [1m[34mSELECT "attendances".* FROM "attendances" ORDER BY "attendances"."created_at" DESC LIMIT 10 /*action='dashboard',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/views/admins/dashboard.html.erb:127
+  Rendered admins/dashboard.html.erb within layouts/application (Duration: 1.4ms | GC: 0.3ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.7ms | GC: 0.3ms)
+Completed 200 OK in 32ms (Views: 1.8ms | ActiveRecord: 0.2ms (3 queries, 0 cached) | GC: 0.9ms)
+
+
+Started GET "/admins/all_attendances" for ::1 at 2025-07-08 14:00:48 +0900
+Processing by AdminsController#all_attendances as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering admins/all_attendances.html.erb within layouts/application
+  [1m[36mAttendance Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "attendances" LIMIT 1 /*action='all_attendances',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/views/admins/all_attendances.html.erb:35
+  [1m[36mAttendance Load (0.1ms)[0m  [1m[34mSELECT "attendances".* FROM "attendances" ORDER BY "attendances"."created_at" DESC /*action='all_attendances',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/views/admins/all_attendances.html.erb:65
+  [1m[36mAttendance Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "attendances" WHERE "attendances"."status" = '出席' /*action='all_attendances',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/views/admins/all_attendances.html.erb:132
+  [1m[36mAttendance Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "attendances" WHERE "attendances"."status" = '欠席' /*action='all_attendances',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/views/admins/all_attendances.html.erb:152
+  [1m[36mAttendance Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "attendances" WHERE "attendances"."status" = '遅刻' /*action='all_attendances',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/views/admins/all_attendances.html.erb:172
+  [1m[36mAttendance Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "attendances" WHERE "attendances"."status" = '早退' /*action='all_attendances',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/views/admins/all_attendances.html.erb:192
+  Rendered admins/all_attendances.html.erb within layouts/application (Duration: 3.7ms | GC: 0.8ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.1ms | GC: 0.8ms)
+Completed 200 OK in 34ms (Views: 4.1ms | ActiveRecord: 0.3ms (6 queries, 0 cached) | GC: 0.8ms)
+
+
+Started GET "/admins/dashboard" for ::1 at 2025-07-08 14:00:56 +0900
+Processing by AdminsController#dashboard as HTML
+  [1m[36mAttendance Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "attendances" /*action='dashboard',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/controllers/admins_controller.rb:6:in `dashboard'
+  [1m[36mAttendance Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "attendances" WHERE "attendances"."date" = '2025-07-08' /*action='dashboard',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/controllers/admins_controller.rb:7:in `dashboard'
+  Rendering layout layouts/application.html.erb
+  Rendering admins/dashboard.html.erb within layouts/application
+  [1m[36mAttendance Load (0.1ms)[0m  [1m[34mSELECT "attendances".* FROM "attendances" ORDER BY "attendances"."created_at" DESC LIMIT 10 /*action='dashboard',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/views/admins/dashboard.html.erb:127
+  Rendered admins/dashboard.html.erb within layouts/application (Duration: 0.9ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.2ms | GC: 0.0ms)
+Completed 200 OK in 31ms (Views: 1.3ms | ActiveRecord: 0.2ms (3 queries, 0 cached) | GC: 0.1ms)
+
+
+Started GET "/admins/attendances" for ::1 at 2025-07-08 14:00:56 +0900
+Processing by AdminsController#attendances as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering admins/attendances.html.erb within layouts/application
+  [1m[36mAttendance Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "attendances" WHERE "attendances"."date" = '2025-07-08' LIMIT 1 /*action='attendances',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/views/admins/attendances.html.erb:32
+  [1m[36mAttendance Load (0.1ms)[0m  [1m[34mSELECT "attendances".* FROM "attendances" WHERE "attendances"."date" = '2025-07-08' ORDER BY "attendances"."created_at" DESC /*action='attendances',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/views/admins/attendances.html.erb:56
+  [1m[36mAttendance Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "attendances" WHERE "attendances"."date" = '2025-07-08' AND "attendances"."status" = '出席' /*action='attendances',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/views/admins/attendances.html.erb:111
+  [1m[36mAttendance Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "attendances" WHERE "attendances"."date" = '2025-07-08' AND "attendances"."status" = '欠席' /*action='attendances',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/views/admins/attendances.html.erb:131
+  [1m[36mAttendance Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "attendances" WHERE "attendances"."date" = '2025-07-08' AND "attendances"."status" = '遅刻' /*action='attendances',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/views/admins/attendances.html.erb:151
+  [1m[36mAttendance Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "attendances" WHERE "attendances"."date" = '2025-07-08' AND "attendances"."status" = '早退' /*action='attendances',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/views/admins/attendances.html.erb:171
+  Rendered admins/attendances.html.erb within layouts/application (Duration: 21.4ms | GC: 18.3ms)
+  Rendered layout layouts/application.html.erb (Duration: 21.7ms | GC: 18.3ms)
+Completed 200 OK in 51ms (Views: 22.1ms | ActiveRecord: 0.3ms (6 queries, 0 cached) | GC: 20.3ms)
+
+
+Started GET "/admins/dashboard" for ::1 at 2025-07-08 14:00:57 +0900
+Processing by AdminsController#dashboard as HTML
+  [1m[36mAttendance Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "attendances" /*action='dashboard',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/controllers/admins_controller.rb:6:in `dashboard'
+  [1m[36mAttendance Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "attendances" WHERE "attendances"."date" = '2025-07-08' /*action='dashboard',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/controllers/admins_controller.rb:7:in `dashboard'
+  Rendering layout layouts/application.html.erb
+  Rendering admins/dashboard.html.erb within layouts/application
+  [1m[36mAttendance Load (0.1ms)[0m  [1m[34mSELECT "attendances".* FROM "attendances" ORDER BY "attendances"."created_at" DESC LIMIT 10 /*action='dashboard',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/views/admins/dashboard.html.erb:127
+  Rendered admins/dashboard.html.erb within layouts/application (Duration: 1.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.3ms | GC: 0.0ms)
+Completed 200 OK in 32ms (Views: 1.4ms | ActiveRecord: 0.2ms (3 queries, 0 cached) | GC: 0.6ms)
+
+
+Started GET "/admins/dashboard" for ::1 at 2025-07-08 14:00:59 +0900
+Processing by AdminsController#dashboard as HTML
+  [1m[36mAttendance Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "attendances" /*action='dashboard',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/controllers/admins_controller.rb:6:in `dashboard'
+  [1m[36mAttendance Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "attendances" WHERE "attendances"."date" = '2025-07-08' /*action='dashboard',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/controllers/admins_controller.rb:7:in `dashboard'
+  Rendering layout layouts/application.html.erb
+  Rendering admins/dashboard.html.erb within layouts/application
+  [1m[36mAttendance Load (0.1ms)[0m  [1m[34mSELECT "attendances".* FROM "attendances" ORDER BY "attendances"."created_at" DESC LIMIT 10 /*action='dashboard',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/views/admins/dashboard.html.erb:127
+  Rendered admins/dashboard.html.erb within layouts/application (Duration: 1.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.3ms | GC: 0.0ms)
+Completed 200 OK in 33ms (Views: 1.4ms | ActiveRecord: 0.2ms (3 queries, 0 cached) | GC: 0.3ms)
+
+
+Started DELETE "/logout" for ::1 at 2025-07-08 14:01:03 +0900
+Processing by SessionsController#destroy as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+Redirected to http://localhost:3000/
+Completed 302 Found in 28ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for ::1 at 2025-07-08 14:01:03 +0900
+Processing by SessionsController#new as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.2ms | GC: 0.2ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.5ms | GC: 0.2ms)
+Completed 200 OK in 19ms (Views: 1.6ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/signup" for ::1 at 2025-07-08 14:01:04 +0900
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 3.1ms | GC: 0.2ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.4ms | GC: 0.2ms)
+Completed 200 OK in 27ms (Views: 3.8ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.2ms)
+
+
+Started POST "/signup" for ::1 at 2025-07-08 14:01:37 +0900
+Processing by UsersController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"last_name"=>"スズキ", "first_name"=>"", "password"=>"[FILTERED]", "phone"=>"09094133398", "email"=>"[FILTERED]", "role"=>"parent"}, "commit"=>"保護者として登録"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 1.6ms | GC: 0.1ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.9ms | GC: 0.1ms)
+Completed 422 Unprocessable Content in 33ms (Views: 2.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.1ms)
+
+
+Started POST "/signup" for ::1 at 2025-07-08 14:01:40 +0900
+Processing by UsersController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"last_name"=>"スズキ", "first_name"=>"", "password"=>"[FILTERED]", "phone"=>"09094133398", "email"=>"[FILTERED]", "role"=>"parent"}, "commit"=>"保護者として登録"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 1.8ms | GC: 0.2ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.1ms | GC: 0.2ms)
+Completed 422 Unprocessable Content in 32ms (Views: 2.3ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.5ms)
+
+
+Started GET "/" for ::1 at 2025-07-08 14:05:09 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='PocketGakudoApp'*/[0m
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 3.9ms | GC: 0.3ms)
+  Rendered layout layouts/application.html.erb (Duration: 8.4ms | GC: 0.9ms)
+Completed 200 OK in 39ms (Views: 9.9ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 1.4ms)
+
+
+Started POST "/login" for ::1 at 2025-07-08 14:05:11 +0900
+Processing by SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "last_name"=>"", "first_name"=>"kuro", "password"=>"[FILTERED]", "role"=>"parent", "commit"=>"保護者としてログイン"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."name" IS NULL LIMIT 1 /*action='create',application='PocketGakudoApp',controller='sessions'*/[0m
+  ↳ app/models/user.rb:22:in `authenticate'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (first_name = NULL OR last_name = NULL OR CONCAT(last_name, ' ', first_name) = NULL) LIMIT 1 /*action='create',application='PocketGakudoApp',controller='sessions'*/[0m
+  ↳ app/models/user.rb:27:in `authenticate'
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.9ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.2ms | GC: 0.0ms)
+Completed 422 Unprocessable Content in 37ms (Views: 1.4ms | ActiveRecord: 1.4ms (2 queries, 0 cached) | GC: 0.1ms)
+
+
+Started GET "/signup" for ::1 at 2025-07-08 14:05:14 +0900
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 2.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.5ms | GC: 0.0ms)
+Completed 200 OK in 28ms (Views: 2.9ms | ActiveRecord: 0.2ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/signup" for ::1 at 2025-07-08 14:05:16 +0900
+Processing by UsersController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"last_name"=>"", "first_name"=>"", "password"=>"[FILTERED]", "phone"=>"kuro", "email"=>"[FILTERED]", "role"=>"parent"}, "commit"=>"保護者として登録"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 7.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 7.9ms | GC: 0.0ms)
+Completed 422 Unprocessable Content in 50ms (Views: 8.5ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/signup" for ::1 at 2025-07-08 14:05:36 +0900
+Processing by UsersController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"last_name"=>"スズキ", "first_name"=>"", "password"=>"[FILTERED]", "phone"=>"09094133398", "email"=>"[FILTERED]", "role"=>"parent"}, "commit"=>"保護者として登録"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 1.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.7ms | GC: 0.0ms)
+Completed 422 Unprocessable Content in 31ms (Views: 1.9ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/signup" for ::1 at 2025-07-08 14:05:39 +0900
+Processing by UsersController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"last_name"=>"スズキ", "first_name"=>"", "password"=>"[FILTERED]", "phone"=>"09094133398", "email"=>"[FILTERED]", "role"=>"parent"}, "commit"=>"保護者として登録"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 1.9ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.2ms | GC: 0.0ms)
+Completed 422 Unprocessable Content in 32ms (Views: 2.4ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for ::1 at 2025-07-08 14:07:00 +0900
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 2.0ms | GC: 0.6ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.2ms | GC: 0.9ms)
+Completed 200 OK in 19ms (Views: 3.8ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.9ms)
+
+
+Started GET "/signup" for ::1 at 2025-07-08 14:07:04 +0900
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 2.1ms | GC: 0.1ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.4ms | GC: 0.1ms)
+Completed 200 OK in 35ms (Views: 2.8ms | ActiveRecord: 0.9ms (0 queries, 0 cached) | GC: 0.4ms)
+
+
+Started POST "/signup" for ::1 at 2025-07-08 14:07:06 +0900
+Processing by UsersController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"last_name"=>"", "first_name"=>"", "password"=>"[FILTERED]", "phone"=>"kuro", "email"=>"[FILTERED]", "role"=>"parent"}, "commit"=>"保護者として登録"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 2.1ms | GC: 0.4ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.3ms | GC: 0.4ms)
+Completed 422 Unprocessable Content in 25ms (Views: 2.5ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.4ms)
+
+
+Started GET "/" for ::1 at 2025-07-08 14:09:29 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='PocketGakudoApp'*/[0m
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 3.7ms | GC: 0.3ms)
+  Rendered layout layouts/application.html.erb (Duration: 7.9ms | GC: 0.9ms)
+Completed 200 OK in 37ms (Views: 9.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 1.3ms)
+
+
+Started GET "/signup" for ::1 at 2025-07-08 14:09:33 +0900
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 2.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.3ms | GC: 0.0ms)
+Completed 200 OK in 39ms (Views: 2.6ms | ActiveRecord: 1.2ms (0 queries, 0 cached) | GC: 0.1ms)
+
+
+Started POST "/signup" for ::1 at 2025-07-08 14:09:35 +0900
+Processing by UsersController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"last_name"=>"", "first_name"=>"", "password"=>"[FILTERED]", "phone"=>"kuro", "email"=>"[FILTERED]", "role"=>"parent"}, "commit"=>"保護者として登録"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 2.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.9ms | GC: 0.0ms)
+Completed 422 Unprocessable Content in 31ms (Views: 3.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/signup" for ::1 at 2025-07-08 14:09:40 +0900
+Processing by UsersController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"last_name"=>"", "first_name"=>"", "password"=>"[FILTERED]", "phone"=>"", "email"=>"[FILTERED]", "role"=>"parent"}, "commit"=>"保護者として登録"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 2.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.8ms | GC: 0.0ms)
+Completed 422 Unprocessable Content in 30ms (Views: 3.0ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/signup" for ::1 at 2025-07-08 14:10:12 +0900
+Processing by UsersController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"last_name"=>"ヤマダ", "first_name"=>"タロウ", "password"=>"[FILTERED]", "phone"=>"09094133398", "email"=>"[FILTERED]", "role"=>"parent"}, "commit"=>"保護者として登録"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='create',application='PocketGakudoApp',controller='users'*/[0m
+  ↳ app/controllers/users_controller.rb:46:in `create'
+  [1m[36mUser Create (1.1ms)[0m  [1m[32mINSERT INTO "users" ("name", "password", "role", "created_at", "updated_at", "phone", "email", "first_name", "last_name") VALUES ('ヤマダ タロウ', '123abc', 'parent', '2025-07-08 05:10:12.375220', '2025-07-08 05:10:12.375220', '09094133398', 'yykm666@gmail.com', 'タロウ', 'ヤマダ') RETURNING "id" /*action='create',application='PocketGakudoApp',controller='users'*/[0m
+  ↳ app/controllers/users_controller.rb:46:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='create',application='PocketGakudoApp',controller='users'*/[0m
+  ↳ app/controllers/users_controller.rb:46:in `create'
+Redirected to http://localhost:3000/login
+Completed 302 Found in 34ms (ActiveRecord: 1.3ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2025-07-08 14:10:12 +0900
+Processing by SessionsController#new as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.3ms | GC: 0.0ms)
+Completed 200 OK in 20ms (Views: 1.5ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/login" for ::1 at 2025-07-08 14:10:28 +0900
+Processing by SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "last_name"=>"ヤマダ", "first_name"=>"タロウ", "password"=>"[FILTERED]", "role"=>"parent", "commit"=>"保護者としてログイン"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."name" = 'ヤマダ タロウ' LIMIT 1 /*action='create',application='PocketGakudoApp',controller='sessions'*/[0m
+  ↳ app/models/user.rb:28:in `authenticate'
+Redirected to http://localhost:3000/parents/dashboard
+Completed 302 Found in 40ms (ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/parents/dashboard" for ::1 at 2025-07-08 14:10:28 +0900
+Processing by ParentsController#dashboard as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering parents/dashboard.html.erb within layouts/application
+  [1m[36mAttendance Load (0.2ms)[0m  [1m[34mSELECT "attendances".* FROM "attendances" WHERE "attendances"."child_name" = 'ヤマダ タロウの子供' ORDER BY "attendances"."created_at" DESC LIMIT 5 /*action='dashboard',application='PocketGakudoApp',controller='parents'*/[0m
+  ↳ app/views/parents/dashboard.html.erb:79
+  Rendered parents/dashboard.html.erb within layouts/application (Duration: 2.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.3ms | GC: 0.0ms)
+Completed 200 OK in 19ms (Views: 2.3ms | ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/attendances/new" for ::1 at 2025-07-08 14:10:32 +0900
+Processing by AttendancesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering attendances/new.html.erb within layouts/application
+  Rendered attendances/new.html.erb within layouts/application (Duration: 3.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.7ms | GC: 0.0ms)
+Completed 200 OK in 36ms (Views: 4.2ms | ActiveRecord: 0.2ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/attendances" for ::1 at 2025-07-08 14:10:44 +0900
+Processing by AttendancesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "attendance"=>{"child_last_name"=>"ヤマダ", "child_first_name"=>"", "date"=>"2025-07-08", "status"=>"遅刻", "message"=>""}, "commit"=>"送信する"}
+  Rendering layout layouts/application.html.erb
+  Rendering attendances/new.html.erb within layouts/application
+  Rendered attendances/new.html.erb within layouts/application (Duration: 6.7ms | GC: 5.3ms)
+  Rendered layout layouts/application.html.erb (Duration: 7.1ms | GC: 5.3ms)
+Completed 422 Unprocessable Content in 38ms (Views: 7.4ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 5.3ms)
+
+
+Started POST "/attendances" for ::1 at 2025-07-08 14:11:05 +0900
+Processing by AttendancesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "attendance"=>{"child_last_name"=>"ヤマダ", "child_first_name"=>"コタロウ", "date"=>"2025-07-08", "status"=>"遅刻", "message"=>"17時に行きます"}, "commit"=>"送信する"}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='create',application='PocketGakudoApp',controller='attendances'*/[0m
+  ↳ app/controllers/attendances_controller.rb:14:in `create'
+  [1m[36mAttendance Create (0.5ms)[0m  [1m[32mINSERT INTO "attendances" ("child_name", "status", "date", "message", "created_at", "updated_at", "child_first_name", "child_last_name") VALUES ('ヤマダ コタロウ', '遅刻', '2025-07-08', '17時に行きます', '2025-07-08 05:11:05.044724', '2025-07-08 05:11:05.044724', 'コタロウ', 'ヤマダ') RETURNING "id" /*action='create',application='PocketGakudoApp',controller='attendances'*/[0m
+  ↳ app/controllers/attendances_controller.rb:14:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='create',application='PocketGakudoApp',controller='attendances'*/[0m
+  ↳ app/controllers/attendances_controller.rb:14:in `create'
+Redirected to http://localhost:3000/attendances?child_name=%E3%83%A4%E3%83%9E%E3%83%80+%E3%82%B3%E3%82%BF%E3%83%AD%E3%82%A6
+Completed 302 Found in 34ms (ActiveRecord: 0.6ms (1 query, 0 cached) | GC: 1.2ms)
+
+
+Started GET "/attendances?child_name=%E3%83%A4%E3%83%9E%E3%83%80+%E3%82%B3%E3%82%BF%E3%83%AD%E3%82%A6" for ::1 at 2025-07-08 14:11:05 +0900
+Processing by AttendancesController#index as TURBO_STREAM
+  Parameters: {"child_name"=>"ヤマダ コタロウ"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 5 LIMIT 1 /*action='index',application='PocketGakudoApp',controller='attendances'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering attendances/index.html.erb within layouts/application
+  [1m[36mAttendance Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "attendances" WHERE "attendances"."child_name" = 'ヤマダ タロウ' LIMIT 1 /*action='index',application='PocketGakudoApp',controller='attendances'*/[0m
+  ↳ app/views/attendances/index.html.erb:10
+  Rendered attendances/index.html.erb within layouts/application (Duration: 0.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.0ms | GC: 0.0ms)
+Completed 200 OK in 20ms (Views: 1.1ms | ActiveRecord: 0.1ms (2 queries, 0 cached) | GC: 0.3ms)
+
+
+Started GET "/" for ::1 at 2025-07-08 14:11:07 +0900
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.6ms | GC: 0.2ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.0ms | GC: 0.2ms)
+Completed 200 OK in 30ms (Views: 2.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.2ms)
+
+
+Started POST "/login" for ::1 at 2025-07-08 14:11:20 +0900
+Processing by SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "last_name"=>"ヤマダ", "first_name"=>"タロウ", "password"=>"[FILTERED]", "role"=>"parent", "commit"=>"保護者としてログイン"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."name" = 'ヤマダ タロウ' LIMIT 1 /*action='create',application='PocketGakudoApp',controller='sessions'*/[0m
+  ↳ app/models/user.rb:28:in `authenticate'
+Redirected to http://localhost:3000/parents/dashboard
+Completed 302 Found in 29ms (ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.3ms)
+
+
+Started GET "/parents/dashboard" for ::1 at 2025-07-08 14:11:20 +0900
+Processing by ParentsController#dashboard as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering parents/dashboard.html.erb within layouts/application
+  [1m[36mAttendance Load (0.1ms)[0m  [1m[34mSELECT "attendances".* FROM "attendances" WHERE "attendances"."child_name" = 'ヤマダ タロウの子供' ORDER BY "attendances"."created_at" DESC LIMIT 5 /*action='dashboard',application='PocketGakudoApp',controller='parents'*/[0m
+  ↳ app/views/parents/dashboard.html.erb:79
+  Rendered parents/dashboard.html.erb within layouts/application (Duration: 0.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.0ms | GC: 0.0ms)
+Completed 200 OK in 19ms (Views: 1.0ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.1ms)
+
+
+Started GET "/parents/attendances" for ::1 at 2025-07-08 14:11:21 +0900
+Processing by ParentsController#attendances as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering parents/attendances.html.erb within layouts/application
+  [1m[36mAttendance Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "attendances" WHERE "attendances"."child_name" = 'ヤマダ タロウの子供' LIMIT 1 /*action='attendances',application='PocketGakudoApp',controller='parents'*/[0m
+  ↳ app/views/parents/attendances.html.erb:35
+  Rendered parents/attendances.html.erb within layouts/application (Duration: 1.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.0ms | GC: 0.0ms)
+Completed 200 OK in 32ms (Views: 2.1ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/parents/attendances" for ::1 at 2025-07-08 14:11:22 +0900
+Processing by ParentsController#attendances as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering parents/attendances.html.erb within layouts/application
+  [1m[36mAttendance Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "attendances" WHERE "attendances"."child_name" = 'ヤマダ タロウの子供' LIMIT 1 /*action='attendances',application='PocketGakudoApp',controller='parents'*/[0m
+  ↳ app/views/parents/attendances.html.erb:35
+  Rendered parents/attendances.html.erb within layouts/application (Duration: 0.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.1ms | GC: 0.0ms)
+Completed 200 OK in 28ms (Views: 1.2ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/parents/dashboard" for ::1 at 2025-07-08 14:11:25 +0900
+Processing by ParentsController#dashboard as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering parents/dashboard.html.erb within layouts/application
+  [1m[36mAttendance Load (0.1ms)[0m  [1m[34mSELECT "attendances".* FROM "attendances" WHERE "attendances"."child_name" = 'ヤマダ タロウの子供' ORDER BY "attendances"."created_at" DESC LIMIT 5 /*action='dashboard',application='PocketGakudoApp',controller='parents'*/[0m
+  ↳ app/views/parents/dashboard.html.erb:79
+  Rendered parents/dashboard.html.erb within layouts/application (Duration: 0.9ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.2ms | GC: 0.0ms)
+Completed 200 OK in 28ms (Views: 1.3ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/parents/attendances" for ::1 at 2025-07-08 14:11:32 +0900
+Processing by ParentsController#attendances as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering parents/attendances.html.erb within layouts/application
+  [1m[36mAttendance Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "attendances" WHERE "attendances"."child_name" = 'ヤマダ タロウの子供' LIMIT 1 /*action='attendances',application='PocketGakudoApp',controller='parents'*/[0m
+  ↳ app/views/parents/attendances.html.erb:35
+  Rendered parents/attendances.html.erb within layouts/application (Duration: 0.9ms | GC: 0.2ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.3ms | GC: 0.2ms)
+Completed 200 OK in 29ms (Views: 1.4ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/attendances/new" for ::1 at 2025-07-08 14:11:36 +0900
+Processing by AttendancesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering attendances/new.html.erb within layouts/application
+  Rendered attendances/new.html.erb within layouts/application (Duration: 0.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.1ms | GC: 0.0ms)
+Completed 200 OK in 25ms (Views: 1.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/attendances" for ::1 at 2025-07-08 14:11:40 +0900
+Processing by AttendancesController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 5 LIMIT 1 /*action='index',application='PocketGakudoApp',controller='attendances'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering attendances/index.html.erb within layouts/application
+  [1m[36mAttendance Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "attendances" WHERE "attendances"."child_name" = 'ヤマダ タロウ' LIMIT 1 /*action='index',application='PocketGakudoApp',controller='attendances'*/[0m
+  ↳ app/views/attendances/index.html.erb:10
+  Rendered attendances/index.html.erb within layouts/application (Duration: 0.9ms | GC: 0.3ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.3ms | GC: 0.3ms)
+Completed 200 OK in 31ms (Views: 1.5ms | ActiveRecord: 0.2ms (2 queries, 0 cached) | GC: 0.3ms)
+
+
+Started GET "/" for ::1 at 2025-07-08 14:11:42 +0900
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.6ms | GC: 0.3ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.0ms | GC: 0.3ms)
+Completed 200 OK in 28ms (Views: 2.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.3ms)
+
+
+Started POST "/login" for ::1 at 2025-07-08 14:11:55 +0900
+Processing by SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "last_name"=>"ヤマダ", "first_name"=>"コタロウ", "password"=>"[FILTERED]", "role"=>"parent", "commit"=>"保護者としてログイン"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."name" = 'ヤマダ コタロウ' LIMIT 1 /*action='create',application='PocketGakudoApp',controller='sessions'*/[0m
+  ↳ app/models/user.rb:28:in `authenticate'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (first_name = 'ヤマダ コタロウ' OR last_name = 'ヤマダ コタロウ' OR CONCAT(last_name, ' ', first_name) = 'ヤマダ コタロウ') LIMIT 1 /*action='create',application='PocketGakudoApp',controller='sessions'*/[0m
+  ↳ app/models/user.rb:33:in `authenticate'
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.3ms | GC: 0.0ms)
+Completed 422 Unprocessable Content in 32ms (Views: 1.5ms | ActiveRecord: 0.7ms (2 queries, 0 cached) | GC: 0.8ms)
+
+
+Started POST "/login" for ::1 at 2025-07-08 14:12:20 +0900
+Processing by SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "last_name"=>"ヤマダ", "first_name"=>"タロウ", "password"=>"[FILTERED]", "role"=>"parent", "commit"=>"保護者としてログイン"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."name" = 'ヤマダ タロウ' LIMIT 1 /*action='create',application='PocketGakudoApp',controller='sessions'*/[0m
+  ↳ app/models/user.rb:28:in `authenticate'
+Redirected to http://localhost:3000/parents/dashboard
+Completed 302 Found in 51ms (ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 33.2ms)
+
+
+Started GET "/parents/dashboard" for ::1 at 2025-07-08 14:12:20 +0900
+Processing by ParentsController#dashboard as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering parents/dashboard.html.erb within layouts/application
+  [1m[36mAttendance Load (0.1ms)[0m  [1m[34mSELECT "attendances".* FROM "attendances" WHERE "attendances"."child_name" = 'ヤマダ タロウの子供' ORDER BY "attendances"."created_at" DESC LIMIT 5 /*action='dashboard',application='PocketGakudoApp',controller='parents'*/[0m
+  ↳ app/views/parents/dashboard.html.erb:79
+  Rendered parents/dashboard.html.erb within layouts/application (Duration: 0.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.1ms | GC: 0.0ms)
+Completed 200 OK in 16ms (Views: 1.2ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.3ms)
+
+
+Started GET "/parents/attendances" for ::1 at 2025-07-08 14:12:22 +0900
+Processing by ParentsController#attendances as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering parents/attendances.html.erb within layouts/application
+  [1m[36mAttendance Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "attendances" WHERE "attendances"."child_name" = 'ヤマダ タロウの子供' LIMIT 1 /*action='attendances',application='PocketGakudoApp',controller='parents'*/[0m
+  ↳ app/views/parents/attendances.html.erb:35
+  Rendered parents/attendances.html.erb within layouts/application (Duration: 1.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.7ms | GC: 0.0ms)
+Completed 200 OK in 31ms (Views: 1.9ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/parents/dashboard" for ::1 at 2025-07-08 14:12:35 +0900
+Processing by ParentsController#dashboard as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering parents/dashboard.html.erb within layouts/application
+  [1m[36mAttendance Load (0.1ms)[0m  [1m[34mSELECT "attendances".* FROM "attendances" WHERE "attendances"."child_name" = 'ヤマダ タロウの子供' ORDER BY "attendances"."created_at" DESC LIMIT 5 /*action='dashboard',application='PocketGakudoApp',controller='parents'*/[0m
+  ↳ app/views/parents/dashboard.html.erb:79
+  Rendered parents/dashboard.html.erb within layouts/application (Duration: 1.2ms | GC: 0.2ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.5ms | GC: 0.2ms)
+Completed 200 OK in 30ms (Views: 1.6ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/attendances/new" for ::1 at 2025-07-08 14:12:36 +0900
+Processing by AttendancesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering attendances/new.html.erb within layouts/application
+  Rendered attendances/new.html.erb within layouts/application (Duration: 0.9ms | GC: 0.1ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.1ms | GC: 0.1ms)
+Completed 200 OK in 19ms (Views: 1.3ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.1ms)
+
+
+Started POST "/attendances" for ::1 at 2025-07-08 14:12:51 +0900
+Processing by AttendancesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "attendance"=>{"child_last_name"=>"ヤマダ", "child_first_name"=>"コタロウ", "date"=>"2025-07-08", "status"=>"欠席", "message"=>"発熱のため欠席します"}, "commit"=>"送信する"}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='create',application='PocketGakudoApp',controller='attendances'*/[0m
+  ↳ app/controllers/attendances_controller.rb:14:in `create'
+  [1m[36mAttendance Create (0.7ms)[0m  [1m[32mINSERT INTO "attendances" ("child_name", "status", "date", "message", "created_at", "updated_at", "child_first_name", "child_last_name") VALUES ('ヤマダ コタロウ', '欠席', '2025-07-08', '発熱のため欠席します', '2025-07-08 05:12:51.773595', '2025-07-08 05:12:51.773595', 'コタロウ', 'ヤマダ') RETURNING "id" /*action='create',application='PocketGakudoApp',controller='attendances'*/[0m
+  ↳ app/controllers/attendances_controller.rb:14:in `create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='create',application='PocketGakudoApp',controller='attendances'*/[0m
+  ↳ app/controllers/attendances_controller.rb:14:in `create'
+Redirected to http://localhost:3000/attendances?child_name=%E3%83%A4%E3%83%9E%E3%83%80+%E3%82%B3%E3%82%BF%E3%83%AD%E3%82%A6
+Completed 302 Found in 30ms (ActiveRecord: 1.0ms (1 query, 0 cached) | GC: 0.3ms)
+
+
+Started GET "/attendances?child_name=%E3%83%A4%E3%83%9E%E3%83%80+%E3%82%B3%E3%82%BF%E3%83%AD%E3%82%A6" for ::1 at 2025-07-08 14:12:51 +0900
+Processing by AttendancesController#index as TURBO_STREAM
+  Parameters: {"child_name"=>"ヤマダ コタロウ"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 5 LIMIT 1 /*action='index',application='PocketGakudoApp',controller='attendances'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering attendances/index.html.erb within layouts/application
+  [1m[36mAttendance Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "attendances" WHERE "attendances"."child_name" = 'ヤマダ タロウ' LIMIT 1 /*action='index',application='PocketGakudoApp',controller='attendances'*/[0m
+  ↳ app/views/attendances/index.html.erb:10
+  Rendered attendances/index.html.erb within layouts/application (Duration: 0.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 0.8ms | GC: 0.1ms)
+Completed 200 OK in 19ms (Views: 0.9ms | ActiveRecord: 0.1ms (2 queries, 0 cached) | GC: 0.1ms)
+
+
+Started GET "/" for ::1 at 2025-07-08 14:12:52 +0900
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.6ms | GC: 0.3ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.9ms | GC: 0.3ms)
+Completed 200 OK in 27ms (Views: 2.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.3ms)
+
+
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='PocketGakudoApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='PocketGakudoApp'*/[0m
+Migrating to AddParentNameToAttendances (20250708051349)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='PocketGakudoApp'*/[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "attendances" ADD "parent_name" varchar /*application='PocketGakudoApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250708051349') RETURNING "version" /*application='PocketGakudoApp'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='PocketGakudoApp'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='PocketGakudoApp'*/[0m
+Started GET "/" for ::1 at 2025-07-08 14:15:05 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='PocketGakudoApp'*/[0m
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 3.7ms | GC: 0.3ms)
+  Rendered layout layouts/application.html.erb (Duration: 7.9ms | GC: 0.9ms)
+Completed 200 OK in 38ms (Views: 9.3ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 1.3ms)
+
+
+Started POST "/login" for ::1 at 2025-07-08 14:15:15 +0900
+Processing by SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "last_name"=>"ヤマダ", "first_name"=>"タロウ", "password"=>"[FILTERED]", "role"=>"parent", "commit"=>"保護者としてログイン"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."name" = 'ヤマダ タロウ' LIMIT 1 /*action='create',application='PocketGakudoApp',controller='sessions'*/[0m
+  ↳ app/models/user.rb:28:in `authenticate'
+Redirected to http://localhost:3000/parents/dashboard
+Completed 302 Found in 39ms (ActiveRecord: 1.2ms (1 query, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/parents/dashboard" for ::1 at 2025-07-08 14:15:16 +0900
+Processing by ParentsController#dashboard as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering parents/dashboard.html.erb within layouts/application
+  [1m[36mAttendance Load (0.2ms)[0m  [1m[34mSELECT "attendances".* FROM "attendances" WHERE "attendances"."child_name" = 'ヤマダ タロウの子供' ORDER BY "attendances"."created_at" DESC LIMIT 5 /*action='dashboard',application='PocketGakudoApp',controller='parents'*/[0m
+  ↳ app/views/parents/dashboard.html.erb:79
+  Rendered parents/dashboard.html.erb within layouts/application (Duration: 2.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.2ms | GC: 0.0ms)
+Completed 200 OK in 21ms (Views: 2.2ms | ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/parents/attendances" for ::1 at 2025-07-08 14:15:17 +0900
+Processing by ParentsController#attendances as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering parents/attendances.html.erb within layouts/application
+  [1m[36mAttendance Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "attendances" WHERE "attendances"."parent_name" = 'ヤマダ タロウ' LIMIT 1 /*action='attendances',application='PocketGakudoApp',controller='parents'*/[0m
+  ↳ app/views/parents/attendances.html.erb:35
+  Rendered parents/attendances.html.erb within layouts/application (Duration: 1.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.8ms | GC: 0.0ms)
+Completed 200 OK in 33ms (Views: 2.0ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/attendances/new" for ::1 at 2025-07-08 14:15:19 +0900
+Processing by AttendancesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering attendances/new.html.erb within layouts/application
+  Rendered attendances/new.html.erb within layouts/application (Duration: 3.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.6ms | GC: 0.0ms)
+Completed 200 OK in 34ms (Views: 4.0ms | ActiveRecord: 0.2ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/attendances" for ::1 at 2025-07-08 14:15:38 +0900
+Processing by AttendancesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "attendance"=>{"child_last_name"=>"ヤマダ", "child_first_name"=>"コタロウ", "date"=>"2025-07-08", "status"=>"早退", "message"=>"今日は17時に迎えに行きます"}, "commit"=>"送信する"}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='create',application='PocketGakudoApp',controller='attendances'*/[0m
+  ↳ app/controllers/attendances_controller.rb:17:in `create'
+  [1m[36mAttendance Create (1.1ms)[0m  [1m[32mINSERT INTO "attendances" ("child_name", "status", "date", "message", "created_at", "updated_at", "child_first_name", "child_last_name", "parent_name") VALUES ('ヤマダ コタロウ', '早退', '2025-07-08', '今日は17時に迎えに行きます', '2025-07-08 05:15:38.210634', '2025-07-08 05:15:38.210634', 'コタロウ', 'ヤマダ', 'ヤマダ タロウ') RETURNING "id" /*action='create',application='PocketGakudoApp',controller='attendances'*/[0m
+  ↳ app/controllers/attendances_controller.rb:17:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='create',application='PocketGakudoApp',controller='attendances'*/[0m
+  ↳ app/controllers/attendances_controller.rb:17:in `create'
+Redirected to http://localhost:3000/attendances?child_name=%E3%83%A4%E3%83%9E%E3%83%80+%E3%82%B3%E3%82%BF%E3%83%AD%E3%82%A6
+Completed 302 Found in 28ms (ActiveRecord: 1.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/attendances?child_name=%E3%83%A4%E3%83%9E%E3%83%80+%E3%82%B3%E3%82%BF%E3%83%AD%E3%82%A6" for ::1 at 2025-07-08 14:15:38 +0900
+Processing by AttendancesController#index as TURBO_STREAM
+  Parameters: {"child_name"=>"ヤマダ コタロウ"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 5 LIMIT 1 /*action='index',application='PocketGakudoApp',controller='attendances'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering attendances/index.html.erb within layouts/application
+  [1m[36mAttendance Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "attendances" WHERE "attendances"."child_name" = 'ヤマダ タロウ' LIMIT 1 /*action='index',application='PocketGakudoApp',controller='attendances'*/[0m
+  ↳ app/views/attendances/index.html.erb:10
+  Rendered attendances/index.html.erb within layouts/application (Duration: 0.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 0.9ms | GC: 0.0ms)
+Completed 200 OK in 18ms (Views: 1.0ms | ActiveRecord: 0.1ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for ::1 at 2025-07-08 14:15:39 +0900
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.4ms | GC: 0.0ms)
+Completed 200 OK in 18ms (Views: 1.6ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for ::1 at 2025-07-08 14:15:41 +0900
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.9ms | GC: 0.0ms)
+Completed 200 OK in 30ms (Views: 2.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for ::1 at 2025-07-08 14:15:50 +0900
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.8ms | GC: 0.0ms)
+Completed 200 OK in 29ms (Views: 2.0ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for ::1 at 2025-07-08 14:17:29 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='PocketGakudoApp'*/[0m
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 3.9ms | GC: 0.4ms)
+  Rendered layout layouts/application.html.erb (Duration: 8.5ms | GC: 1.0ms)
+Completed 200 OK in 39ms (Views: 10.3ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 1.4ms)
+
+
+Started POST "/login" for ::1 at 2025-07-08 14:17:39 +0900
+Processing by SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "last_name"=>"ヤマダ", "first_name"=>"タロウ", "password"=>"[FILTERED]", "role"=>"parent", "commit"=>"保護者としてログイン"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."name" = 'ヤマダ タロウ' LIMIT 1 /*action='create',application='PocketGakudoApp',controller='sessions'*/[0m
+  ↳ app/models/user.rb:28:in `authenticate'
+Redirected to http://localhost:3000/parents/dashboard
+Completed 302 Found in 38ms (ActiveRecord: 1.0ms (1 query, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/parents/dashboard" for ::1 at 2025-07-08 14:17:39 +0900
+Processing by ParentsController#dashboard as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering parents/dashboard.html.erb within layouts/application
+  [1m[36mAttendance Load (0.1ms)[0m  [1m[34mSELECT "attendances".* FROM "attendances" WHERE "attendances"."child_name" = 'ヤマダ タロウの子供' ORDER BY "attendances"."created_at" DESC LIMIT 5 /*action='dashboard',application='PocketGakudoApp',controller='parents'*/[0m
+  ↳ app/views/parents/dashboard.html.erb:79
+  Rendered parents/dashboard.html.erb within layouts/application (Duration: 1.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.0ms | GC: 0.0ms)
+Completed 200 OK in 17ms (Views: 2.2ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/parents/attendances" for ::1 at 2025-07-08 14:17:40 +0900
+Processing by ParentsController#attendances as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering parents/attendances.html.erb within layouts/application
+  [1m[36mAttendance Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "attendances" WHERE "attendances"."parent_name" = 'ヤマダ タロウ' LIMIT 1 /*action='attendances',application='PocketGakudoApp',controller='parents'*/[0m
+  ↳ app/views/parents/attendances.html.erb:36
+  [1m[36mAttendance Load (0.3ms)[0m  [1m[34mSELECT "attendances".* FROM "attendances" WHERE "attendances"."parent_name" = 'ヤマダ タロウ' ORDER BY "attendances"."created_at" DESC /*action='attendances',application='PocketGakudoApp',controller='parents'*/[0m
+  ↳ app/views/parents/attendances.html.erb:57
+  [1m[36mAttendance Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "attendances" WHERE "attendances"."parent_name" = 'ヤマダ タロウ' AND "attendances"."status" = '出席' /*action='attendances',application='PocketGakudoApp',controller='parents'*/[0m
+  ↳ app/views/parents/attendances.html.erb:109
+  [1m[36mAttendance Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "attendances" WHERE "attendances"."parent_name" = 'ヤマダ タロウ' AND "attendances"."status" = '欠席' /*action='attendances',application='PocketGakudoApp',controller='parents'*/[0m
+  ↳ app/views/parents/attendances.html.erb:129
+  [1m[36mAttendance Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "attendances" WHERE "attendances"."parent_name" = 'ヤマダ タロウ' AND "attendances"."status" = '遅刻' /*action='attendances',application='PocketGakudoApp',controller='parents'*/[0m
+  ↳ app/views/parents/attendances.html.erb:149
+  [1m[36mAttendance Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "attendances" WHERE "attendances"."parent_name" = 'ヤマダ タロウ' AND "attendances"."status" = '早退' /*action='attendances',application='PocketGakudoApp',controller='parents'*/[0m
+  ↳ app/views/parents/attendances.html.erb:169
+  Rendered parents/attendances.html.erb within layouts/application (Duration: 6.9ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 7.3ms | GC: 0.0ms)
+Completed 200 OK in 37ms (Views: 6.6ms | ActiveRecord: 0.9ms (6 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for ::1 at 2025-07-08 14:19:32 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='PocketGakudoApp'*/[0m
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 3.9ms | GC: 0.5ms)
+  Rendered layout layouts/application.html.erb (Duration: 8.5ms | GC: 1.0ms)
+Completed 200 OK in 42ms (Views: 9.8ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 1.5ms)
+
+
+Started POST "/login" for ::1 at 2025-07-08 14:19:42 +0900
+Processing by SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "last_name"=>"ヤマダ", "first_name"=>"タロウ", "password"=>"[FILTERED]", "role"=>"parent", "commit"=>"保護者としてログイン"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."name" = 'ヤマダ タロウ' LIMIT 1 /*action='create',application='PocketGakudoApp',controller='sessions'*/[0m
+  ↳ app/models/user.rb:28:in `authenticate'
+Redirected to http://localhost:3000/parents/dashboard
+Completed 302 Found in 38ms (ActiveRecord: 1.4ms (1 query, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/parents/dashboard" for ::1 at 2025-07-08 14:19:42 +0900
+Processing by ParentsController#dashboard as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering parents/dashboard.html.erb within layouts/application
+  [1m[36mAttendance Load (0.2ms)[0m  [1m[34mSELECT "attendances".* FROM "attendances" WHERE "attendances"."child_name" = 'ヤマダ タロウの子供' ORDER BY "attendances"."created_at" DESC LIMIT 5 /*action='dashboard',application='PocketGakudoApp',controller='parents'*/[0m
+  ↳ app/views/parents/dashboard.html.erb:79
+  Rendered parents/dashboard.html.erb within layouts/application (Duration: 2.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.4ms | GC: 0.0ms)
+Completed 200 OK in 18ms (Views: 2.4ms | ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/parents/attendances" for ::1 at 2025-07-08 14:19:44 +0900
+Processing by ParentsController#attendances as HTML
+  [1m[36mAttendance Load (0.4ms)[0m  [1m[34mSELECT "attendances".* FROM "attendances" WHERE "attendances"."parent_name" = 'ヤマダ タロウ' ORDER BY "attendances"."created_at" DESC /*action='attendances',application='PocketGakudoApp',controller='parents'*/[0m
+  ↳ app/controllers/parents_controller.rb:14:in `group_by'
+  Rendering layout layouts/application.html.erb
+  Rendering parents/attendances.html.erb within layouts/application
+  Rendered parents/attendances.html.erb within layouts/application (Duration: 2.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.0ms | GC: 0.0ms)
+Completed 500 Internal Server Error in 38ms (ActiveRecord: 0.5ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `where' for [#<Attendance id: 7, child_name: "ヤマダ コタロウ", status: "早退", date: "2025-07-08", message: "今日は17時に迎えに行きます", created_at: "2025-07-08 05:15:38.210634000 +0000", updated_at: "2025-07-08 05:15:38.210634000 +0000", child_first_name: "コタロウ", child_last_name: "ヤマダ", parent_name: "ヤマダ タロウ">]:Array)
+Caused by: NoMethodError (undefined method `where' for [#<Attendance id: 7, child_name: "ヤマダ コタロウ", status: "早退", date: "2025-07-08", message: "今日は17時に迎えに行きます", created_at: "2025-07-08 05:15:38.210634000 +0000", updated_at: "2025-07-08 05:15:38.210634000 +0000", child_first_name: "コタロウ", child_last_name: "ヤマダ", parent_name: "ヤマダ タロウ">]:Array)
+
+Information for: ActionView::Template::Error (undefined method `where' for [#<Attendance id: 7, child_name: "ヤマダ コタロウ", status: "早退", date: "2025-07-08", message: "今日は17時に迎えに行きます", created_at: "2025-07-08 05:15:38.210634000 +0000", updated_at: "2025-07-08 05:15:38.210634000 +0000", child_first_name: "コタロウ", child_last_name: "ヤマダ", parent_name: "ヤマダ タロウ">]:Array):
+    117:                       <dl>
+    118:                         <dt class="text-sm font-medium text-gray-500 truncate">出席</dt>
+    119:                         <dd class="text-lg font-medium text-gray-900">
+    120:                           <%= attendances.where(status: "出席").count %>件
+    121:                         </dd>
+    122:                       </dl>
+    123:                     </div>
+  
+app/views/parents/attendances.html.erb:120
+app/views/parents/attendances.html.erb:37:in `each'
+app/views/parents/attendances.html.erb:37
+
+Information for cause: NoMethodError (undefined method `where' for [#<Attendance id: 7, child_name: "ヤマダ コタロウ", status: "早退", date: "2025-07-08", message: "今日は17時に迎えに行きます", created_at: "2025-07-08 05:15:38.210634000 +0000", updated_at: "2025-07-08 05:15:38.210634000 +0000", child_first_name: "コタロウ", child_last_name: "ヤマダ", parent_name: "ヤマダ タロウ">]:Array):
+  
+app/views/parents/attendances.html.erb:120
+app/views/parents/attendances.html.erb:37:in `each'
+app/views/parents/attendances.html.erb:37
+Started GET "/" for ::1 at 2025-07-08 14:20:39 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='PocketGakudoApp'*/[0m
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 17.0ms | GC: 13.3ms)
+  Rendered layout layouts/application.html.erb (Duration: 21.0ms | GC: 13.6ms)
+Completed 200 OK in 51ms (Views: 22.4ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 14.0ms)
+
+
+Started POST "/login" for ::1 at 2025-07-08 14:20:50 +0900
+Processing by SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "last_name"=>"ヤマダ", "first_name"=>"タロウ", "password"=>"[FILTERED]", "role"=>"parent", "commit"=>"保護者としてログイン"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."name" = 'ヤマダ タロウ' LIMIT 1 /*action='create',application='PocketGakudoApp',controller='sessions'*/[0m
+  ↳ app/models/user.rb:28:in `authenticate'
+Redirected to http://localhost:3000/parents/dashboard
+Completed 302 Found in 37ms (ActiveRecord: 1.1ms (1 query, 0 cached) | GC: 1.0ms)
+
+
+Started GET "/parents/dashboard" for ::1 at 2025-07-08 14:20:50 +0900
+Processing by ParentsController#dashboard as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering parents/dashboard.html.erb within layouts/application
+  [1m[36mAttendance Load (0.1ms)[0m  [1m[34mSELECT "attendances".* FROM "attendances" WHERE "attendances"."child_name" = 'ヤマダ タロウの子供' ORDER BY "attendances"."created_at" DESC LIMIT 5 /*action='dashboard',application='PocketGakudoApp',controller='parents'*/[0m
+  ↳ app/views/parents/dashboard.html.erb:79
+  Rendered parents/dashboard.html.erb within layouts/application (Duration: 2.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.3ms | GC: 0.0ms)
+Completed 200 OK in 18ms (Views: 2.5ms | ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/parents/attendances" for ::1 at 2025-07-08 14:20:51 +0900
+Processing by ParentsController#attendances as HTML
+  [1m[36mAttendance Load (0.1ms)[0m  [1m[34mSELECT "attendances".* FROM "attendances" WHERE "attendances"."parent_name" = 'ヤマダ タロウ' ORDER BY "attendances"."created_at" DESC /*action='attendances',application='PocketGakudoApp',controller='parents'*/[0m
+  ↳ app/controllers/parents_controller.rb:14:in `group_by'
+  Rendering layout layouts/application.html.erb
+  Rendering parents/attendances.html.erb within layouts/application
+  Rendered parents/attendances.html.erb within layouts/application (Duration: 0.9ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.1ms | GC: 0.0ms)
+Completed 200 OK in 26ms (Views: 1.3ms | ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/parents/dashboard" for ::1 at 2025-07-08 14:20:53 +0900
+Processing by ParentsController#dashboard as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering parents/dashboard.html.erb within layouts/application
+  [1m[36mAttendance Load (0.1ms)[0m  [1m[34mSELECT "attendances".* FROM "attendances" WHERE "attendances"."child_name" = 'ヤマダ タロウの子供' ORDER BY "attendances"."created_at" DESC LIMIT 5 /*action='dashboard',application='PocketGakudoApp',controller='parents'*/[0m
+  ↳ app/views/parents/dashboard.html.erb:79
+  Rendered parents/dashboard.html.erb within layouts/application (Duration: 1.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.3ms | GC: 0.0ms)
+Completed 200 OK in 29ms (Views: 1.4ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/attendances/new" for ::1 at 2025-07-08 14:20:55 +0900
+Processing by AttendancesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering attendances/new.html.erb within layouts/application
+  Rendered attendances/new.html.erb within layouts/application (Duration: 3.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.1ms | GC: 0.0ms)
+Completed 200 OK in 33ms (Views: 4.6ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/attendances" for ::1 at 2025-07-08 14:21:28 +0900
+Processing by AttendancesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "attendance"=>{"child_last_name"=>"ヤマダ", "child_first_name"=>"アイ", "date"=>"2025-07-09", "status"=>"欠席", "message"=>"発熱のため欠席します"}, "commit"=>"送信する"}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='create',application='PocketGakudoApp',controller='attendances'*/[0m
+  ↳ app/controllers/attendances_controller.rb:17:in `create'
+  [1m[36mAttendance Create (1.4ms)[0m  [1m[32mINSERT INTO "attendances" ("child_name", "status", "date", "message", "created_at", "updated_at", "child_first_name", "child_last_name", "parent_name") VALUES ('ヤマダ アイ', '欠席', '2025-07-09', '発熱のため欠席します', '2025-07-08 05:21:28.977888', '2025-07-08 05:21:28.977888', 'アイ', 'ヤマダ', 'ヤマダ タロウ') RETURNING "id" /*action='create',application='PocketGakudoApp',controller='attendances'*/[0m
+  ↳ app/controllers/attendances_controller.rb:17:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='create',application='PocketGakudoApp',controller='attendances'*/[0m
+  ↳ app/controllers/attendances_controller.rb:17:in `create'
+Redirected to http://localhost:3000/attendances?child_name=%E3%83%A4%E3%83%9E%E3%83%80+%E3%82%A2%E3%82%A4
+Completed 302 Found in 32ms (ActiveRecord: 1.6ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/attendances?child_name=%E3%83%A4%E3%83%9E%E3%83%80+%E3%82%A2%E3%82%A4" for ::1 at 2025-07-08 14:21:28 +0900
+Processing by AttendancesController#index as TURBO_STREAM
+  Parameters: {"child_name"=>"ヤマダ アイ"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 5 LIMIT 1 /*action='index',application='PocketGakudoApp',controller='attendances'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering attendances/index.html.erb within layouts/application
+  [1m[36mAttendance Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "attendances" WHERE "attendances"."child_name" = 'ヤマダ タロウ' LIMIT 1 /*action='index',application='PocketGakudoApp',controller='attendances'*/[0m
+  ↳ app/views/attendances/index.html.erb:10
+  Rendered attendances/index.html.erb within layouts/application (Duration: 0.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.0ms | GC: 0.0ms)
+Completed 200 OK in 19ms (Views: 1.1ms | ActiveRecord: 0.1ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for ::1 at 2025-07-08 14:21:30 +0900
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.1ms | GC: 0.0ms)
+Completed 200 OK in 32ms (Views: 2.3ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for ::1 at 2025-07-08 14:22:38 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='PocketGakudoApp'*/[0m
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 3.5ms | GC: 0.3ms)
+  Rendered layout layouts/application.html.erb (Duration: 7.5ms | GC: 0.9ms)
+Completed 200 OK in 37ms (Views: 8.8ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 1.3ms)
+
+
+Started POST "/login" for ::1 at 2025-07-08 14:22:49 +0900
+Processing by SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "last_name"=>"ヤマダ", "first_name"=>"タロウ", "password"=>"[FILTERED]", "role"=>"parent", "commit"=>"保護者としてログイン"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."name" = 'ヤマダ タロウ' LIMIT 1 /*action='create',application='PocketGakudoApp',controller='sessions'*/[0m
+  ↳ app/models/user.rb:28:in `authenticate'
+Redirected to http://localhost:3000/parents/dashboard
+Completed 302 Found in 38ms (ActiveRecord: 1.2ms (1 query, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/parents/dashboard" for ::1 at 2025-07-08 14:22:50 +0900
+Processing by ParentsController#dashboard as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering parents/dashboard.html.erb within layouts/application
+  [1m[36mAttendance Load (0.2ms)[0m  [1m[34mSELECT "attendances".* FROM "attendances" WHERE "attendances"."child_name" = 'ヤマダ タロウの子供' ORDER BY "attendances"."created_at" DESC LIMIT 5 /*action='dashboard',application='PocketGakudoApp',controller='parents'*/[0m
+  ↳ app/views/parents/dashboard.html.erb:79
+  Rendered parents/dashboard.html.erb within layouts/application (Duration: 2.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.4ms | GC: 0.0ms)
+Completed 200 OK in 18ms (Views: 2.4ms | ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/parents/attendances" for ::1 at 2025-07-08 14:22:51 +0900
+Processing by ParentsController#attendances as HTML
+  [1m[36mAttendance Load (0.4ms)[0m  [1m[34mSELECT "attendances".* FROM "attendances" WHERE "attendances"."parent_name" = 'ヤマダ タロウ' ORDER BY "attendances"."created_at" DESC /*action='attendances',application='PocketGakudoApp',controller='parents'*/[0m
+  ↳ app/controllers/parents_controller.rb:14:in `group_by'
+  Rendering layout layouts/application.html.erb
+  Rendering parents/attendances.html.erb within layouts/application
+  Rendered parents/attendances.html.erb within layouts/application (Duration: 1.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.8ms | GC: 0.0ms)
+Completed 200 OK in 34ms (Views: 2.1ms | ActiveRecord: 0.5ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/parents/dashboard" for ::1 at 2025-07-08 14:23:10 +0900
+Processing by ParentsController#dashboard as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering parents/dashboard.html.erb within layouts/application
+  [1m[36mAttendance Load (0.1ms)[0m  [1m[34mSELECT "attendances".* FROM "attendances" WHERE "attendances"."child_name" = 'ヤマダ タロウの子供' ORDER BY "attendances"."created_at" DESC LIMIT 5 /*action='dashboard',application='PocketGakudoApp',controller='parents'*/[0m
+  ↳ app/views/parents/dashboard.html.erb:79
+  Rendered parents/dashboard.html.erb within layouts/application (Duration: 1.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.3ms | GC: 0.0ms)
+Completed 200 OK in 29ms (Views: 1.4ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/attendances/new" for ::1 at 2025-07-08 14:23:11 +0900
+Processing by AttendancesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering attendances/new.html.erb within layouts/application
+  Rendered attendances/new.html.erb within layouts/application (Duration: 3.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.4ms | GC: 0.0ms)
+Completed 200 OK in 26ms (Views: 3.8ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/attendances" for ::1 at 2025-07-08 14:23:13 +0900
+Processing by AttendancesController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 5 LIMIT 1 /*action='index',application='PocketGakudoApp',controller='attendances'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering attendances/index.html.erb within layouts/application
+  [1m[36mAttendance Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "attendances" WHERE "attendances"."child_name" = 'ヤマダ タロウ' LIMIT 1 /*action='index',application='PocketGakudoApp',controller='attendances'*/[0m
+  ↳ app/views/attendances/index.html.erb:22
+  Rendered attendances/index.html.erb within layouts/application (Duration: 1.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.4ms | GC: 0.0ms)
+Completed 200 OK in 33ms (Views: 1.6ms | ActiveRecord: 0.2ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/attendances" for ::1 at 2025-07-08 14:23:13 +0900
+Processing by AttendancesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 5 LIMIT 1 /*action='index',application='PocketGakudoApp',controller='attendances'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering attendances/index.html.erb within layouts/application
+  [1m[36mAttendance Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "attendances" WHERE "attendances"."child_name" = 'ヤマダ タロウ' LIMIT 1 /*action='index',application='PocketGakudoApp',controller='attendances'*/[0m
+  ↳ app/views/attendances/index.html.erb:22
+  Rendered attendances/index.html.erb within layouts/application (Duration: 0.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.1ms | GC: 0.0ms)
+Completed 200 OK in 31ms (Views: 1.3ms | ActiveRecord: 0.2ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/parents/dashboard" for ::1 at 2025-07-08 14:23:16 +0900
+Processing by ParentsController#dashboard as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering parents/dashboard.html.erb within layouts/application
+  [1m[36mAttendance Load (0.1ms)[0m  [1m[34mSELECT "attendances".* FROM "attendances" WHERE "attendances"."child_name" = 'ヤマダ タロウの子供' ORDER BY "attendances"."created_at" DESC LIMIT 5 /*action='dashboard',application='PocketGakudoApp',controller='parents'*/[0m
+  ↳ app/views/parents/dashboard.html.erb:79
+  Rendered parents/dashboard.html.erb within layouts/application (Duration: 0.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 0.9ms | GC: 0.0ms)
+Completed 200 OK in 14ms (Views: 0.9ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/parents/attendances" for ::1 at 2025-07-08 14:23:18 +0900
+Processing by ParentsController#attendances as HTML
+  [1m[36mAttendance Load (0.1ms)[0m  [1m[34mSELECT "attendances".* FROM "attendances" WHERE "attendances"."parent_name" = 'ヤマダ タロウ' ORDER BY "attendances"."created_at" DESC /*action='attendances',application='PocketGakudoApp',controller='parents'*/[0m
+  ↳ app/controllers/parents_controller.rb:14:in `group_by'
+  Rendering layout layouts/application.html.erb
+  Rendering parents/attendances.html.erb within layouts/application
+  Rendered parents/attendances.html.erb within layouts/application (Duration: 0.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 0.7ms | GC: 0.0ms)
+Completed 200 OK in 30ms (Views: 0.8ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/parents/dashboard" for ::1 at 2025-07-08 14:23:20 +0900
+Processing by ParentsController#dashboard as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering parents/dashboard.html.erb within layouts/application
+  [1m[36mAttendance Load (0.1ms)[0m  [1m[34mSELECT "attendances".* FROM "attendances" WHERE "attendances"."child_name" = 'ヤマダ タロウの子供' ORDER BY "attendances"."created_at" DESC LIMIT 5 /*action='dashboard',application='PocketGakudoApp',controller='parents'*/[0m
+  ↳ app/views/parents/dashboard.html.erb:79
+  Rendered parents/dashboard.html.erb within layouts/application (Duration: 1.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.4ms | GC: 0.0ms)
+Completed 200 OK in 31ms (Views: 1.5ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/attendances/new" for ::1 at 2025-07-08 14:23:22 +0900
+Processing by AttendancesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering attendances/new.html.erb within layouts/application
+  Rendered attendances/new.html.erb within layouts/application (Duration: 0.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.1ms | GC: 0.0ms)
+Completed 200 OK in 23ms (Views: 1.6ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.3ms)
+
+
+Started GET "/parents/attendances" for ::1 at 2025-07-08 14:23:25 +0900
+Processing by ParentsController#attendances as HTML
+  [1m[36mAttendance Load (0.1ms)[0m  [1m[34mSELECT "attendances".* FROM "attendances" WHERE "attendances"."parent_name" = 'ヤマダ タロウ' ORDER BY "attendances"."created_at" DESC /*action='attendances',application='PocketGakudoApp',controller='parents'*/[0m
+  ↳ app/controllers/parents_controller.rb:14:in `group_by'
+  Rendering layout layouts/application.html.erb
+  Rendering parents/attendances.html.erb within layouts/application
+  Rendered parents/attendances.html.erb within layouts/application (Duration: 0.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 0.7ms | GC: 0.0ms)
+Completed 200 OK in 31ms (Views: 0.8ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.4ms)
+
+
+Started DELETE "/logout" for ::1 at 2025-07-08 14:23:32 +0900
+Processing by SessionsController#destroy as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+Redirected to http://localhost:3000/
+Completed 302 Found in 28ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.4ms)
+
+
+Started GET "/" for ::1 at 2025-07-08 14:23:32 +0900
+Processing by SessionsController#new as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.3ms | GC: 0.3ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.6ms | GC: 0.3ms)
+Completed 200 OK in 19ms (Views: 1.7ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.3ms)
+
+
+Started POST "/login" for ::1 at 2025-07-08 14:23:39 +0900
+Processing by SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "name"=>"admin", "password"=>"[FILTERED]", "role"=>"admin", "commit"=>"管理者としてログイン"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."name" = 'admin' LIMIT 1 /*action='create',application='PocketGakudoApp',controller='sessions'*/[0m
+  ↳ app/models/user.rb:28:in `authenticate'
+Redirected to http://localhost:3000/admins/dashboard
+Completed 302 Found in 30ms (ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/admins/dashboard" for ::1 at 2025-07-08 14:23:39 +0900
+Processing by AdminsController#dashboard as TURBO_STREAM
+  [1m[36mAttendance Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "attendances" /*action='dashboard',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/controllers/admins_controller.rb:6:in `dashboard'
+  [1m[36mAttendance Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "attendances" WHERE "attendances"."date" = '2025-07-08' /*action='dashboard',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/controllers/admins_controller.rb:7:in `dashboard'
+  Rendering layout layouts/application.html.erb
+  Rendering admins/dashboard.html.erb within layouts/application
+  [1m[36mAttendance Load (0.1ms)[0m  [1m[34mSELECT "attendances".* FROM "attendances" ORDER BY "attendances"."created_at" DESC LIMIT 10 /*action='dashboard',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/views/admins/dashboard.html.erb:127
+  Rendered admins/dashboard.html.erb within layouts/application (Duration: 1.4ms | GC: 0.1ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.6ms | GC: 0.1ms)
+Completed 200 OK in 21ms (Views: 1.8ms | ActiveRecord: 0.4ms (3 queries, 0 cached) | GC: 0.1ms)
+
+
+Started GET "/admins/attendances?date=2025-07-08" for ::1 at 2025-07-08 14:23:45 +0900
+Processing by AdminsController#attendances as HTML
+  Parameters: {"date"=>"2025-07-08"}
+  Rendering layout layouts/application.html.erb
+  Rendering admins/attendances.html.erb within layouts/application
+  [1m[36mAttendance Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "attendances" WHERE "attendances"."date" = '2025-07-08' LIMIT 1 /*action='attendances',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/views/admins/attendances.html.erb:32
+  [1m[36mAttendance Load (0.1ms)[0m  [1m[34mSELECT "attendances".* FROM "attendances" WHERE "attendances"."date" = '2025-07-08' ORDER BY "attendances"."created_at" DESC /*action='attendances',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/views/admins/attendances.html.erb:56
+  [1m[36mAttendance Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "attendances" WHERE "attendances"."date" = '2025-07-08' AND "attendances"."status" = '出席' /*action='attendances',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/views/admins/attendances.html.erb:111
+  [1m[36mAttendance Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "attendances" WHERE "attendances"."date" = '2025-07-08' AND "attendances"."status" = '欠席' /*action='attendances',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/views/admins/attendances.html.erb:131
+  [1m[36mAttendance Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "attendances" WHERE "attendances"."date" = '2025-07-08' AND "attendances"."status" = '遅刻' /*action='attendances',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/views/admins/attendances.html.erb:151
+  [1m[36mAttendance Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "attendances" WHERE "attendances"."date" = '2025-07-08' AND "attendances"."status" = '早退' /*action='attendances',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/views/admins/attendances.html.erb:171
+  Rendered admins/attendances.html.erb within layouts/application (Duration: 3.7ms | GC: 0.2ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.1ms | GC: 0.2ms)
+Completed 200 OK in 34ms (Views: 4.0ms | ActiveRecord: 0.3ms (6 queries, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/" for ::1 at 2025-07-08 14:25:28 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='PocketGakudoApp'*/[0m
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 4.8ms | GC: 0.4ms)
+  Rendered layout layouts/application.html.erb (Duration: 9.3ms | GC: 1.0ms)
+Completed 200 OK in 39ms (Views: 10.8ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 1.5ms)
+
+
+Started POST "/login" for ::1 at 2025-07-08 14:25:37 +0900
+Processing by SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "name"=>"admin", "password"=>"[FILTERED]", "role"=>"admin", "commit"=>"管理者としてログイン"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."name" = 'admin' LIMIT 1 /*action='create',application='PocketGakudoApp',controller='sessions'*/[0m
+  ↳ app/models/user.rb:28:in `authenticate'
+Redirected to http://localhost:3000/admins/dashboard
+Completed 302 Found in 38ms (ActiveRecord: 1.3ms (1 query, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/admins/dashboard" for ::1 at 2025-07-08 14:25:37 +0900
+Processing by AdminsController#dashboard as TURBO_STREAM
+  [1m[36mAttendance Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "attendances" /*action='dashboard',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/controllers/admins_controller.rb:6:in `dashboard'
+  [1m[36mAttendance Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "attendances" WHERE "attendances"."date" = '2025-07-08' /*action='dashboard',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/controllers/admins_controller.rb:7:in `dashboard'
+  Rendering layout layouts/application.html.erb
+  Rendering admins/dashboard.html.erb within layouts/application
+  [1m[36mAttendance Load (0.1ms)[0m  [1m[34mSELECT "attendances".* FROM "attendances" ORDER BY "attendances"."created_at" DESC LIMIT 10 /*action='dashboard',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/views/admins/dashboard.html.erb:127
+  Rendered admins/dashboard.html.erb within layouts/application (Duration: 3.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.3ms | GC: 0.0ms)
+Completed 200 OK in 21ms (Views: 3.5ms | ActiveRecord: 0.3ms (3 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/admins/attendances?date=2025-07-08" for ::1 at 2025-07-08 14:25:40 +0900
+Processing by AdminsController#attendances as HTML
+  Parameters: {"date"=>"2025-07-08"}
+  Rendering layout layouts/application.html.erb
+  Rendering admins/attendances.html.erb within layouts/application
+  [1m[36mAttendance Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "attendances" WHERE "attendances"."date" = '2025-07-08' LIMIT 1 /*action='attendances',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/views/admins/attendances.html.erb:32
+  [1m[36mAttendance Load (0.3ms)[0m  [1m[34mSELECT "attendances".* FROM "attendances" WHERE "attendances"."date" = '2025-07-08' ORDER BY "attendances"."created_at" DESC /*action='attendances',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/views/admins/attendances.html.erb:56
+  [1m[36mAttendance Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "attendances" WHERE "attendances"."date" = '2025-07-08' AND "attendances"."status" = '出席' /*action='attendances',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/views/admins/attendances.html.erb:111
+  [1m[36mAttendance Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "attendances" WHERE "attendances"."date" = '2025-07-08' AND "attendances"."status" = '欠席' /*action='attendances',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/views/admins/attendances.html.erb:131
+  [1m[36mAttendance Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "attendances" WHERE "attendances"."date" = '2025-07-08' AND "attendances"."status" = '遅刻' /*action='attendances',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/views/admins/attendances.html.erb:151
+  [1m[36mAttendance Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "attendances" WHERE "attendances"."date" = '2025-07-08' AND "attendances"."status" = '早退' /*action='attendances',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/views/admins/attendances.html.erb:171
+  Rendered admins/attendances.html.erb within layouts/application (Duration: 3.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.9ms | GC: 0.0ms)
+Completed 200 OK in 31ms (Views: 3.6ms | ActiveRecord: 0.5ms (6 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for ::1 at 2025-07-08 14:28:43 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='PocketGakudoApp'*/[0m
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 4.8ms | GC: 0.3ms)
+  Rendered layout layouts/application.html.erb (Duration: 9.0ms | GC: 1.0ms)
+Completed 200 OK in 41ms (Views: 10.5ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 1.4ms)
+
+
+Started POST "/login" for ::1 at 2025-07-08 14:28:52 +0900
+Processing by SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "last_name"=>"ヤマダ", "first_name"=>"タロウ", "password"=>"[FILTERED]", "role"=>"parent", "commit"=>"保護者としてログイン"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."name" = 'ヤマダ タロウ' LIMIT 1 /*action='create',application='PocketGakudoApp',controller='sessions'*/[0m
+  ↳ app/models/user.rb:28:in `authenticate'
+Redirected to http://localhost:3000/parents/dashboard
+Completed 302 Found in 39ms (ActiveRecord: 1.2ms (1 query, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/parents/dashboard" for ::1 at 2025-07-08 14:28:52 +0900
+Processing by ParentsController#dashboard as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering parents/dashboard.html.erb within layouts/application
+  [1m[36mAttendance Load (0.2ms)[0m  [1m[34mSELECT "attendances".* FROM "attendances" WHERE "attendances"."child_name" = 'ヤマダ タロウの子供' ORDER BY "attendances"."created_at" DESC LIMIT 5 /*action='dashboard',application='PocketGakudoApp',controller='parents'*/[0m
+  ↳ app/views/parents/dashboard.html.erb:79
+  Rendered parents/dashboard.html.erb within layouts/application (Duration: 2.9ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.1ms | GC: 0.0ms)
+Completed 200 OK in 19ms (Views: 3.1ms | ActiveRecord: 0.4ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/parents/attendances" for ::1 at 2025-07-08 14:28:53 +0900
+Processing by ParentsController#attendances as HTML
+  [1m[36mAttendance Load (0.5ms)[0m  [1m[34mSELECT "attendances".* FROM "attendances" WHERE "attendances"."parent_name" = 'ヤマダ タロウ' ORDER BY "attendances"."created_at" DESC /*action='attendances',application='PocketGakudoApp',controller='parents'*/[0m
+  ↳ app/controllers/parents_controller.rb:14:in `group_by'
+  Rendering layout layouts/application.html.erb
+  Rendering parents/attendances.html.erb within layouts/application
+  Rendered parents/attendances.html.erb within layouts/application (Duration: 1.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.5ms | GC: 0.0ms)
+Completed 200 OK in 34ms (Views: 1.7ms | ActiveRecord: 0.5ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/attendances/new" for ::1 at 2025-07-08 14:28:58 +0900
+Processing by AttendancesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering attendances/new.html.erb within layouts/application
+  Rendered attendances/new.html.erb within layouts/application (Duration: 2.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.6ms | GC: 0.0ms)
+Completed 200 OK in 25ms (Views: 3.0ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/attendances" for ::1 at 2025-07-08 14:29:16 +0900
+Processing by AttendancesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "attendance"=>{"child_last_name"=>"ヤマダ", "child_first_name"=>"コタロウ", "date"=>"2025-07-08", "status"=>"欠席", "message"=>"発熱したので欠席します"}, "commit"=>"新しく送信する"}
+  [1m[36mAttendance Load (0.1ms)[0m  [1m[34mSELECT "attendances".* FROM "attendances" WHERE "attendances"."child_name" = 'ヤマダ コタロウ' AND "attendances"."date" = '2025-07-08' AND "attendances"."parent_name" = 'ヤマダ タロウ' ORDER BY "attendances"."id" ASC LIMIT 1 /*action='create',application='PocketGakudoApp',controller='attendances'*/[0m
+  ↳ app/controllers/attendances_controller.rb:81:in `check_existing_attendance'
+  Rendering layout layouts/application.html.erb
+  Rendering attendances/new.html.erb within layouts/application
+  Rendered attendances/new.html.erb within layouts/application (Duration: 1.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.3ms | GC: 0.0ms)
+Completed 422 Unprocessable Content in 28ms (Views: 1.5ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started PATCH "/attendances/7/update_existing?_method=patch" for ::1 at 2025-07-08 14:29:40 +0900
+Processing by AttendancesController#update_existing as TURBO_STREAM
+  Parameters: {"id"=>"7"}
+  [1m[36mAttendance Load (0.1ms)[0m  [1m[34mSELECT "attendances".* FROM "attendances" WHERE "attendances"."id" = 7 LIMIT 1 /*action='update_existing',application='PocketGakudoApp',controller='attendances'*/[0m
+  ↳ app/controllers/attendances_controller.rb:33:in `update_existing'
+Completed 400 Bad Request in 30ms (ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty or invalid: attendance):
+  
+app/controllers/attendances_controller.rb:71:in `attendance_params'
+app/controllers/attendances_controller.rb:35:in `update_existing'
+Started GET "/attendances/new" for ::1 at 2025-07-08 14:29:40 +0900
+Processing by AttendancesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering attendances/new.html.erb within layouts/application
+  Rendered attendances/new.html.erb within layouts/application (Duration: 0.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 0.9ms | GC: 0.0ms)
+Completed 200 OK in 14ms (Views: 1.0ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/attendances" for ::1 at 2025-07-08 14:29:41 +0900
+Processing by AttendancesController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 5 LIMIT 1 /*action='index',application='PocketGakudoApp',controller='attendances'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering attendances/index.html.erb within layouts/application
+  [1m[36mAttendance Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "attendances" WHERE "attendances"."child_name" = 'ヤマダ タロウ' LIMIT 1 /*action='index',application='PocketGakudoApp',controller='attendances'*/[0m
+  ↳ app/views/attendances/index.html.erb:22
+  Rendered attendances/index.html.erb within layouts/application (Duration: 1.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.5ms | GC: 0.0ms)
+Completed 200 OK in 32ms (Views: 1.6ms | ActiveRecord: 0.2ms (2 queries, 0 cached) | GC: 0.4ms)
+
+
+Started GET "/" for ::1 at 2025-07-08 14:29:42 +0900
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 2.3ms | GC: 0.6ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.7ms | GC: 0.6ms)
+Completed 200 OK in 31ms (Views: 3.0ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.6ms)
+
+
+Started POST "/login" for ::1 at 2025-07-08 14:29:52 +0900
+Processing by SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "last_name"=>"ヤマダ", "first_name"=>"コタロウ", "password"=>"[FILTERED]", "role"=>"parent", "commit"=>"保護者としてログイン"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."name" = 'ヤマダ コタロウ' LIMIT 1 /*action='create',application='PocketGakudoApp',controller='sessions'*/[0m
+  ↳ app/models/user.rb:28:in `authenticate'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (first_name = 'ヤマダ コタロウ' OR last_name = 'ヤマダ コタロウ' OR CONCAT(last_name, ' ', first_name) = 'ヤマダ コタロウ') LIMIT 1 /*action='create',application='PocketGakudoApp',controller='sessions'*/[0m
+  ↳ app/models/user.rb:33:in `authenticate'
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.3ms | GC: 0.3ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.6ms | GC: 0.3ms)
+Completed 422 Unprocessable Content in 33ms (Views: 1.7ms | ActiveRecord: 0.5ms (2 queries, 0 cached) | GC: 0.4ms)
+
+
+Started POST "/login" for ::1 at 2025-07-08 14:29:56 +0900
+Processing by SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "last_name"=>"ヤマダ", "first_name"=>"kuro", "password"=>"[FILTERED]", "role"=>"parent", "commit"=>"保護者としてログイン"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."name" = 'ヤマダ kuro' LIMIT 1 /*action='create',application='PocketGakudoApp',controller='sessions'*/[0m
+  ↳ app/models/user.rb:28:in `authenticate'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (first_name = 'ヤマダ kuro' OR last_name = 'ヤマダ kuro' OR CONCAT(last_name, ' ', first_name) = 'ヤマダ kuro') LIMIT 1 /*action='create',application='PocketGakudoApp',controller='sessions'*/[0m
+  ↳ app/models/user.rb:33:in `authenticate'
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.3ms | GC: 0.2ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.6ms | GC: 0.2ms)
+Completed 422 Unprocessable Content in 30ms (Views: 1.8ms | ActiveRecord: 0.2ms (2 queries, 0 cached) | GC: 0.3ms)
+
+
+Started POST "/login" for ::1 at 2025-07-08 14:30:00 +0900
+Processing by SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "last_name"=>"ヤマダ", "first_name"=>"kuro", "password"=>"[FILTERED]", "role"=>"parent", "commit"=>"保護者としてログイン"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."name" = 'ヤマダ kuro' LIMIT 1 /*action='create',application='PocketGakudoApp',controller='sessions'*/[0m
+  ↳ app/models/user.rb:28:in `authenticate'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (first_name = 'ヤマダ kuro' OR last_name = 'ヤマダ kuro' OR CONCAT(last_name, ' ', first_name) = 'ヤマダ kuro') LIMIT 1 /*action='create',application='PocketGakudoApp',controller='sessions'*/[0m
+  ↳ app/models/user.rb:33:in `authenticate'
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.3ms | GC: 0.2ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.5ms | GC: 0.2ms)
+Completed 422 Unprocessable Content in 33ms (Views: 1.7ms | ActiveRecord: 0.2ms (2 queries, 0 cached) | GC: 0.3ms)
+
+
+Started POST "/login" for ::1 at 2025-07-08 14:30:14 +0900
+Processing by SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "last_name"=>"ヤマダ", "first_name"=>"コタロウ", "password"=>"[FILTERED]", "role"=>"parent", "commit"=>"保護者としてログイン"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."name" = 'ヤマダ コタロウ' LIMIT 1 /*action='create',application='PocketGakudoApp',controller='sessions'*/[0m
+  ↳ app/models/user.rb:28:in `authenticate'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (first_name = 'ヤマダ コタロウ' OR last_name = 'ヤマダ コタロウ' OR CONCAT(last_name, ' ', first_name) = 'ヤマダ コタロウ') LIMIT 1 /*action='create',application='PocketGakudoApp',controller='sessions'*/[0m
+  ↳ app/models/user.rb:33:in `authenticate'
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.2ms | GC: 0.2ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.4ms | GC: 0.2ms)
+Completed 422 Unprocessable Content in 32ms (Views: 1.7ms | ActiveRecord: 0.3ms (2 queries, 0 cached) | GC: 0.5ms)
+
+
+Started POST "/login" for ::1 at 2025-07-08 14:30:24 +0900
+Processing by SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "last_name"=>"ヤマダ", "first_name"=>"タロウ", "password"=>"[FILTERED]", "role"=>"parent", "commit"=>"保護者としてログイン"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."name" = 'ヤマダ タロウ' LIMIT 1 /*action='create',application='PocketGakudoApp',controller='sessions'*/[0m
+  ↳ app/models/user.rb:28:in `authenticate'
+Redirected to http://localhost:3000/parents/dashboard
+Completed 302 Found in 31ms (ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.7ms)
+
+
+Started GET "/parents/dashboard" for ::1 at 2025-07-08 14:30:24 +0900
+Processing by ParentsController#dashboard as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering parents/dashboard.html.erb within layouts/application
+  [1m[36mAttendance Load (0.1ms)[0m  [1m[34mSELECT "attendances".* FROM "attendances" WHERE "attendances"."child_name" = 'ヤマダ タロウの子供' ORDER BY "attendances"."created_at" DESC LIMIT 5 /*action='dashboard',application='PocketGakudoApp',controller='parents'*/[0m
+  ↳ app/views/parents/dashboard.html.erb:79
+  Rendered parents/dashboard.html.erb within layouts/application (Duration: 0.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.0ms | GC: 0.0ms)
+Completed 200 OK in 18ms (Views: 1.0ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/parents/attendances" for ::1 at 2025-07-08 14:30:26 +0900
+Processing by ParentsController#attendances as HTML
+  [1m[36mAttendance Load (0.1ms)[0m  [1m[34mSELECT "attendances".* FROM "attendances" WHERE "attendances"."parent_name" = 'ヤマダ タロウ' ORDER BY "attendances"."created_at" DESC /*action='attendances',application='PocketGakudoApp',controller='parents'*/[0m
+  ↳ app/controllers/parents_controller.rb:14:in `group_by'
+  Rendering layout layouts/application.html.erb
+  Rendering parents/attendances.html.erb within layouts/application
+  Rendered parents/attendances.html.erb within layouts/application (Duration: 0.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 0.8ms | GC: 0.0ms)
+Completed 200 OK in 31ms (Views: 1.0ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/attendances/new" for ::1 at 2025-07-08 14:30:38 +0900
+Processing by AttendancesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering attendances/new.html.erb within layouts/application
+  Rendered attendances/new.html.erb within layouts/application (Duration: 1.2ms | GC: 0.2ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.6ms | GC: 0.2ms)
+Completed 200 OK in 31ms (Views: 1.8ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/attendances/new" for ::1 at 2025-07-08 14:30:46 +0900
+Processing by AttendancesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering attendances/new.html.erb within layouts/application
+  Rendered attendances/new.html.erb within layouts/application (Duration: 1.7ms | GC: 0.3ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.0ms | GC: 0.3ms)
+Completed 200 OK in 30ms (Views: 2.3ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.3ms)
+
+
+Started POST "/attendances" for ::1 at 2025-07-08 14:30:59 +0900
+Processing by AttendancesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "attendance"=>{"child_last_name"=>"ヤマダ", "child_first_name"=>"コタロウ", "date"=>"2025-07-08", "status"=>"欠席", "message"=>"発熱のため"}, "commit"=>"新しく送信する"}
+  [1m[36mAttendance Load (0.1ms)[0m  [1m[34mSELECT "attendances".* FROM "attendances" WHERE "attendances"."child_name" = 'ヤマダ コタロウ' AND "attendances"."date" = '2025-07-08' AND "attendances"."parent_name" = 'ヤマダ タロウ' ORDER BY "attendances"."id" ASC LIMIT 1 /*action='create',application='PocketGakudoApp',controller='attendances'*/[0m
+  ↳ app/controllers/attendances_controller.rb:81:in `check_existing_attendance'
+  Rendering layout layouts/application.html.erb
+  Rendering attendances/new.html.erb within layouts/application
+  Rendered attendances/new.html.erb within layouts/application (Duration: 0.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.0ms | GC: 0.0ms)
+Completed 422 Unprocessable Content in 30ms (Views: 1.2ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.5ms)
+
+
+Started GET "/" for ::1 at 2025-07-08 14:35:32 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='PocketGakudoApp'*/[0m
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 4.8ms | GC: 0.5ms)
+  Rendered layout layouts/application.html.erb (Duration: 8.8ms | GC: 0.9ms)
+Completed 200 OK in 38ms (Views: 10.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 1.2ms)
+
+
+Started POST "/login" for ::1 at 2025-07-08 14:35:45 +0900
+Processing by SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "last_name"=>"ヤマダ", "first_name"=>"タロウ", "password"=>"[FILTERED]", "role"=>"parent", "commit"=>"保護者としてログイン"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."name" = 'ヤマダ タロウ' LIMIT 1 /*action='create',application='PocketGakudoApp',controller='sessions'*/[0m
+  ↳ app/models/user.rb:28:in `authenticate'
+Redirected to http://localhost:3000/parents/dashboard
+Completed 302 Found in 40ms (ActiveRecord: 1.2ms (1 query, 0 cached) | GC: 0.1ms)
+
+
+Started GET "/parents/dashboard" for ::1 at 2025-07-08 14:35:46 +0900
+Processing by ParentsController#dashboard as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering parents/dashboard.html.erb within layouts/application
+  [1m[36mAttendance Load (0.1ms)[0m  [1m[34mSELECT "attendances".* FROM "attendances" WHERE "attendances"."child_name" = 'ヤマダ タロウの子供' ORDER BY "attendances"."created_at" DESC LIMIT 5 /*action='dashboard',application='PocketGakudoApp',controller='parents'*/[0m
+  ↳ app/views/parents/dashboard.html.erb:79
+  Rendered parents/dashboard.html.erb within layouts/application (Duration: 2.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.2ms | GC: 0.0ms)
+Completed 200 OK in 18ms (Views: 2.4ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/parents/attendances" for ::1 at 2025-07-08 14:35:47 +0900
+Processing by ParentsController#attendances as HTML
+  [1m[36mAttendance Load (0.2ms)[0m  [1m[34mSELECT "attendances".* FROM "attendances" WHERE "attendances"."parent_name" = 'ヤマダ タロウ' ORDER BY "attendances"."created_at" DESC /*action='attendances',application='PocketGakudoApp',controller='parents'*/[0m
+  ↳ app/controllers/parents_controller.rb:14:in `group_by'
+  Rendering layout layouts/application.html.erb
+  Rendering parents/attendances.html.erb within layouts/application
+  Rendered parents/attendances.html.erb within layouts/application (Duration: 2.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.5ms | GC: 0.0ms)
+Completed 200 OK in 36ms (Views: 2.9ms | ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/attendances/8/edit" for ::1 at 2025-07-08 14:35:50 +0900
+Processing by AttendancesController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mAttendance Load (0.1ms)[0m  [1m[34mSELECT "attendances".* FROM "attendances" WHERE "attendances"."id" = 8 LIMIT 1 /*action='edit',application='PocketGakudoApp',controller='attendances'*/[0m
+  ↳ app/controllers/attendances_controller.rb:7:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering attendances/edit.html.erb within layouts/application
+  Rendered attendances/edit.html.erb within layouts/application (Duration: 1.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.4ms | GC: 0.0ms)
+Completed 500 Internal Server Error in 29ms (ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `attendance_path' for #<ActionView::Base:0x0000000000cf58>)
+Caused by: NoMethodError (undefined method `attendance_path' for #<ActionView::Base:0x0000000000cf58>)
+
+Information for: ActionView::Template::Error (undefined method `attendance_path' for #<ActionView::Base:0x0000000000cf58>):
+    4:       ✏️ 出欠席連絡を編集
+    5:     </h1>
+    6:     
+    7:     <%= form_with model: @attendance, local: true, class: "space-y-4" do |form| %>
+    8:       <% if @attendance.errors.any? %>
+    9:         <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
+   10:           <ul class="list-disc list-inside">
+  
+app/views/attendances/edit.html.erb:7
+
+Information for cause: NoMethodError (undefined method `attendance_path' for #<ActionView::Base:0x0000000000cf58>):
+  
+app/views/attendances/edit.html.erb:7
+Started GET "/attendances/8/edit" for ::1 at 2025-07-08 14:36:59 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='PocketGakudoApp'*/[0m
+Processing by AttendancesController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mAttendance Load (0.0ms)[0m  [1m[34mSELECT "attendances".* FROM "attendances" WHERE "attendances"."id" = 8 LIMIT 1 /*action='edit',application='PocketGakudoApp',controller='attendances'*/[0m
+  ↳ app/controllers/attendances_controller.rb:7:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering attendances/edit.html.erb within layouts/application
+  Rendered attendances/edit.html.erb within layouts/application (Duration: 3.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 7.4ms | GC: 0.0ms)
+Completed 200 OK in 45ms (Views: 8.5ms | ActiveRecord: 0.8ms (1 query, 0 cached) | GC: 1.3ms)
+
+
+Started PATCH "/attendances/8" for ::1 at 2025-07-08 14:37:15 +0900
+Processing by AttendancesController#update as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "attendance"=>{"child_last_name"=>"ヤマダ", "child_first_name"=>"アイ", "date"=>"2025-07-09", "status"=>"早退", "message"=>"早退にします"}, "commit"=>"更新する", "id"=>"8"}
+  [1m[36mAttendance Load (0.1ms)[0m  [1m[34mSELECT "attendances".* FROM "attendances" WHERE "attendances"."id" = 8 LIMIT 1 /*action='update',application='PocketGakudoApp',controller='attendances'*/[0m
+  ↳ app/controllers/attendances_controller.rb:17:in `update'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='update',application='PocketGakudoApp',controller='attendances'*/[0m
+  ↳ app/controllers/attendances_controller.rb:24:in `update'
+  [1m[36mAttendance Update (2.3ms)[0m  [1m[33mUPDATE "attendances" SET "status" = '早退', "message" = '早退にします', "updated_at" = '2025-07-08 05:37:15.423488' WHERE "attendances"."id" = 8 /*action='update',application='PocketGakudoApp',controller='attendances'*/[0m
+  ↳ app/controllers/attendances_controller.rb:24:in `update'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='update',application='PocketGakudoApp',controller='attendances'*/[0m
+  ↳ app/controllers/attendances_controller.rb:24:in `update'
+Redirected to http://localhost:3000/attendances?child_name=%E3%83%A4%E3%83%9E%E3%83%80+%E3%82%A2%E3%82%A4
+Completed 302 Found in 31ms (ActiveRecord: 2.6ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/attendances?child_name=%E3%83%A4%E3%83%9E%E3%83%80+%E3%82%A2%E3%82%A4" for ::1 at 2025-07-08 14:37:15 +0900
+Processing by AttendancesController#index as TURBO_STREAM
+  Parameters: {"child_name"=>"ヤマダ アイ"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 5 LIMIT 1 /*action='index',application='PocketGakudoApp',controller='attendances'*/[0m
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering attendances/index.html.erb within layouts/application
+  [1m[36mAttendance Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "attendances" WHERE "attendances"."child_name" = 'ヤマダ タロウ' LIMIT 1 /*action='index',application='PocketGakudoApp',controller='attendances'*/[0m
+  ↳ app/views/attendances/index.html.erb:22
+  Rendered attendances/index.html.erb within layouts/application (Duration: 0.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 0.9ms | GC: 0.0ms)
+Completed 200 OK in 20ms (Views: 1.0ms | ActiveRecord: 0.2ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for ::1 at 2025-07-08 14:37:16 +0900
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 2.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.6ms | GC: 0.0ms)
+Completed 200 OK in 24ms (Views: 2.9ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/parents/dashboard" for ::1 at 2025-07-08 14:37:17 +0900
+Processing by ParentsController#dashboard as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering parents/dashboard.html.erb within layouts/application
+  [1m[36mAttendance Load (0.2ms)[0m  [1m[34mSELECT "attendances".* FROM "attendances" WHERE "attendances"."child_name" = 'ヤマダ タロウの子供' ORDER BY "attendances"."created_at" DESC LIMIT 5 /*action='dashboard',application='PocketGakudoApp',controller='parents'*/[0m
+  ↳ app/views/parents/dashboard.html.erb:79
+  Rendered parents/dashboard.html.erb within layouts/application (Duration: 1.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.0ms | GC: 0.0ms)
+Completed 200 OK in 29ms (Views: 2.3ms | ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/parents/attendances" for ::1 at 2025-07-08 14:37:19 +0900
+Processing by ParentsController#attendances as HTML
+  [1m[36mAttendance Load (0.2ms)[0m  [1m[34mSELECT "attendances".* FROM "attendances" WHERE "attendances"."parent_name" = 'ヤマダ タロウ' ORDER BY "attendances"."created_at" DESC /*action='attendances',application='PocketGakudoApp',controller='parents'*/[0m
+  ↳ app/controllers/parents_controller.rb:14:in `group_by'
+  Rendering layout layouts/application.html.erb
+  Rendering parents/attendances.html.erb within layouts/application
+  Rendered parents/attendances.html.erb within layouts/application (Duration: 1.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.9ms | GC: 0.0ms)
+Completed 200 OK in 32ms (Views: 2.2ms | ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started DELETE "/logout" for ::1 at 2025-07-08 14:37:27 +0900
+Processing by SessionsController#destroy as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+Redirected to http://localhost:3000/
+Completed 302 Found in 29ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for ::1 at 2025-07-08 14:37:27 +0900
+Processing by SessionsController#new as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.4ms | GC: 0.0ms)
+Completed 200 OK in 19ms (Views: 1.5ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/login" for ::1 at 2025-07-08 14:37:33 +0900
+Processing by SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "name"=>"admin", "password"=>"[FILTERED]", "role"=>"admin", "commit"=>"管理者としてログイン"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."name" = 'admin' LIMIT 1 /*action='create',application='PocketGakudoApp',controller='sessions'*/[0m
+  ↳ app/models/user.rb:28:in `authenticate'
+Redirected to http://localhost:3000/admins/dashboard
+Completed 302 Found in 30ms (ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/admins/dashboard" for ::1 at 2025-07-08 14:37:33 +0900
+Processing by AdminsController#dashboard as TURBO_STREAM
+  [1m[36mAttendance Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "attendances" /*action='dashboard',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/controllers/admins_controller.rb:6:in `dashboard'
+  [1m[36mAttendance Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "attendances" WHERE "attendances"."date" = '2025-07-08' /*action='dashboard',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/controllers/admins_controller.rb:7:in `dashboard'
+  Rendering layout layouts/application.html.erb
+  Rendering admins/dashboard.html.erb within layouts/application
+  [1m[36mAttendance Load (0.1ms)[0m  [1m[34mSELECT "attendances".* FROM "attendances" ORDER BY "attendances"."created_at" DESC LIMIT 10 /*action='dashboard',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/views/admins/dashboard.html.erb:127
+  Rendered admins/dashboard.html.erb within layouts/application (Duration: 1.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.4ms | GC: 0.0ms)
+Completed 200 OK in 20ms (Views: 1.7ms | ActiveRecord: 0.4ms (3 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/admins/attendances?date=2025-07-08" for ::1 at 2025-07-08 14:37:35 +0900
+Processing by AdminsController#attendances as HTML
+  Parameters: {"date"=>"2025-07-08"}
+  Rendering layout layouts/application.html.erb
+  Rendering admins/attendances.html.erb within layouts/application
+  [1m[36mAttendance Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "attendances" WHERE "attendances"."date" = '2025-07-08' LIMIT 1 /*action='attendances',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/views/admins/attendances.html.erb:32
+  [1m[36mAttendance Load (0.1ms)[0m  [1m[34mSELECT "attendances".* FROM "attendances" WHERE "attendances"."date" = '2025-07-08' ORDER BY "attendances"."created_at" DESC /*action='attendances',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/views/admins/attendances.html.erb:56
+  [1m[36mAttendance Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "attendances" WHERE "attendances"."date" = '2025-07-08' AND "attendances"."status" = '出席' /*action='attendances',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/views/admins/attendances.html.erb:111
+  [1m[36mAttendance Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "attendances" WHERE "attendances"."date" = '2025-07-08' AND "attendances"."status" = '欠席' /*action='attendances',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/views/admins/attendances.html.erb:131
+  [1m[36mAttendance Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "attendances" WHERE "attendances"."date" = '2025-07-08' AND "attendances"."status" = '遅刻' /*action='attendances',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/views/admins/attendances.html.erb:151
+  [1m[36mAttendance Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "attendances" WHERE "attendances"."date" = '2025-07-08' AND "attendances"."status" = '早退' /*action='attendances',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/views/admins/attendances.html.erb:171
+  Rendered admins/attendances.html.erb within layouts/application (Duration: 3.1ms | GC: 0.2ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.7ms | GC: 0.6ms)
+Completed 200 OK in 27ms (Views: 3.6ms | ActiveRecord: 0.2ms (6 queries, 0 cached) | GC: 0.6ms)
+
+
+Started GET "/admins/dashboard" for ::1 at 2025-07-08 14:37:51 +0900
+Processing by AdminsController#dashboard as HTML
+  [1m[36mAttendance Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "attendances" /*action='dashboard',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/controllers/admins_controller.rb:6:in `dashboard'
+  [1m[36mAttendance Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "attendances" WHERE "attendances"."date" = '2025-07-08' /*action='dashboard',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/controllers/admins_controller.rb:7:in `dashboard'
+  Rendering layout layouts/application.html.erb
+  Rendering admins/dashboard.html.erb within layouts/application
+  [1m[36mAttendance Load (0.1ms)[0m  [1m[34mSELECT "attendances".* FROM "attendances" ORDER BY "attendances"."created_at" DESC LIMIT 10 /*action='dashboard',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/views/admins/dashboard.html.erb:127
+  Rendered admins/dashboard.html.erb within layouts/application (Duration: 1.3ms | GC: 0.3ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.5ms | GC: 0.3ms)
+Completed 200 OK in 30ms (Views: 1.6ms | ActiveRecord: 0.2ms (3 queries, 0 cached) | GC: 0.3ms)
+
+
+Started GET "/admins/all_attendances" for ::1 at 2025-07-08 14:37:53 +0900
+Processing by AdminsController#all_attendances as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering admins/all_attendances.html.erb within layouts/application
+  [1m[36mAttendance Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "attendances" LIMIT 1 /*action='all_attendances',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/views/admins/all_attendances.html.erb:35
+  [1m[36mAttendance Load (0.1ms)[0m  [1m[34mSELECT "attendances".* FROM "attendances" ORDER BY "attendances"."created_at" DESC /*action='all_attendances',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/views/admins/all_attendances.html.erb:65
+  [1m[36mAttendance Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "attendances" WHERE "attendances"."status" = '出席' /*action='all_attendances',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/views/admins/all_attendances.html.erb:132
+  [1m[36mAttendance Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "attendances" WHERE "attendances"."status" = '欠席' /*action='all_attendances',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/views/admins/all_attendances.html.erb:152
+  [1m[36mAttendance Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "attendances" WHERE "attendances"."status" = '遅刻' /*action='all_attendances',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/views/admins/all_attendances.html.erb:172
+  [1m[36mAttendance Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "attendances" WHERE "attendances"."status" = '早退' /*action='all_attendances',application='PocketGakudoApp',controller='admins'*/[0m
+  ↳ app/views/admins/all_attendances.html.erb:192
+  Rendered admins/all_attendances.html.erb within layouts/application (Duration: 3.9ms | GC: 0.1ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.2ms | GC: 0.1ms)
+Completed 200 OK in 35ms (Views: 4.2ms | ActiveRecord: 0.3ms (6 queries, 0 cached) | GC: 0.5ms)
+
+

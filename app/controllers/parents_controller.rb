@@ -7,8 +7,14 @@ class ParentsController < ApplicationController
 
   def attendances
     @user_name = session[:user_name]
-    # 保護者の子供の出欠席履歴を取得（実際の実装では、保護者と子供の関連付けが必要）
-    @attendances = Attendance.where(child_name: "#{@user_name}の子供").order(created_at: :desc)
+    # 現在ログインしている保護者が送信した出欠席履歴を取得
+    all_attendances = Attendance.where(parent_name: @user_name).order(created_at: :desc)
+    
+    # 子供の名前ごとにグループ化
+    @attendances_by_child = all_attendances.group_by(&:child_name)
+    
+    # 子供の名前のリスト（統計表示用）
+    @child_names = @attendances_by_child.keys.sort
   end
 
   private

@@ -2,7 +2,8 @@
   <div class="bg-white shadow">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between h-16">
-        <div class="flex items-center">
+        <div class="flex items-center space-x-4">
+          <%= link_to "← 戻る", parent_dashboard_path, class: "text-blue-600 hover:text-blue-800 font-medium" %>
           <h1 class="text-xl font-semibold text-gray-900">
             📋 出欠席履歴
           </h1>
@@ -20,10 +21,10 @@
       <div class="flex justify-between items-center mb-6">
         <div>
           <h2 class="text-2xl font-bold text-gray-900">
-            <%= "#{@user_name}さんの子供" %>の出欠席履歴
+            <%= "#{@user_name}さんのお子様" %>の出欠席履歴
           </h2>
           <p class="text-gray-600 mt-1">
-            過去の出欠席連絡を確認できます
+            お子様ごとの過去の出欠席連絡を確認できます
           </p>
         </div>
         <div class="flex space-x-3">
@@ -32,147 +33,167 @@
         </div>
       </div>
 
-      <% if @attendances.any? %>
-        <div class="bg-white shadow overflow-hidden sm:rounded-lg">
-          <div class="overflow-x-auto">
-            <table class="min-w-full divide-y divide-gray-200">
-              <thead class="bg-gray-50">
-                <tr>
-                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    日付
-                  </th>
-                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    状況
-                  </th>
-                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    メッセージ
-                  </th>
-                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    送信時刻
-                  </th>
-                </tr>
-              </thead>
-              <tbody class="bg-white divide-y divide-gray-200">
-                <% @attendances.each do |attendance| %>
-                  <tr class="hover:bg-gray-50">
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                      <%= attendance.date&.strftime("%m月%d日") %>
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap">
-                      <% case attendance.status %>
-                      <% when "出席" %>
-                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                          <%= attendance.status %>
-                        </span>
-                      <% when "欠席" %>
-                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
-                          <%= attendance.status %>
-                        </span>
-                      <% when "遅刻" %>
-                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
-                          <%= attendance.status %>
-                        </span>
-                      <% when "早退" %>
-                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-100 text-orange-800">
-                          <%= attendance.status %>
-                        </span>
-                      <% end %>
-                    </td>
-                    <td class="px-6 py-4 text-sm text-gray-900 max-w-xs">
-                      <%= attendance.message.presence || "-" %>
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                      <%= attendance.created_at.strftime("%m/%d %H:%M") %>
-                    </td>
-                  </tr>
-                <% end %>
-              </tbody>
-            </table>
-          </div>
-        </div>
+      <% if @attendances_by_child.any? %>
+        <% @attendances_by_child.each do |child_name, attendances| %>
+          <div class="mb-8">
+            <div class="flex items-center mb-4">
+              <h3 class="text-xl font-semibold text-gray-900">
+                👶 <%= child_name %>さんの出席履歴
+              </h3>
+              <span class="ml-3 px-3 py-1 bg-blue-100 text-blue-800 text-sm rounded-full">
+                <%= attendances.count %>件
+              </span>
+            </div>
 
-        <!-- 統計情報 -->
-        <div class="mt-6 grid grid-cols-1 md:grid-cols-4 gap-4">
-          <div class="bg-white overflow-hidden shadow rounded-lg">
-            <div class="p-5">
-              <div class="flex items-center">
-                <div class="flex-shrink-0">
-                  <div class="w-8 h-8 bg-green-500 rounded-md flex items-center justify-center">
-                    <span class="text-white text-sm">✓</span>
+            <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+              <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                  <thead class="bg-gray-50">
+                    <tr>
+                      <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        日付
+                      </th>
+                      <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        状況
+                      </th>
+                      <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        メッセージ
+                      </th>
+                      <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        送信時刻
+                      </th>
+                      <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        操作
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody class="bg-white divide-y divide-gray-200">
+                    <% attendances.each do |attendance| %>
+                      <tr class="hover:bg-gray-50">
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                          <%= attendance.date&.strftime("%m月%d日") %>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                          <% case attendance.status %>
+                          <% when "出席" %>
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                              <%= attendance.status %>
+                            </span>
+                          <% when "欠席" %>
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                              <%= attendance.status %>
+                            </span>
+                          <% when "遅刻" %>
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
+                              <%= attendance.status %>
+                            </span>
+                          <% when "早退" %>
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-100 text-orange-800">
+                              <%= attendance.status %>
+                            </span>
+                          <% end %>
+                        </td>
+                        <td class="px-6 py-4 text-sm text-gray-900 max-w-xs">
+                          <%= attendance.message.presence || "-" %>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                          <%= format_japanese_time(attendance.created_at) %>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                          <%= link_to "内容を変更", edit_attendance_path(attendance), 
+                                      class: "text-blue-600 hover:text-blue-800 font-medium" %>
+                        </td>
+                      </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- 各子供の統計情報 -->
+            <div class="mt-4 grid grid-cols-1 md:grid-cols-4 gap-4">
+              <div class="bg-white overflow-hidden shadow rounded-lg">
+                <div class="p-5">
+                  <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                      <div class="w-8 h-8 bg-green-500 rounded-md flex items-center justify-center">
+                        <span class="text-white text-sm">✓</span>
+                      </div>
+                    </div>
+                    <div class="ml-5 w-0 flex-1">
+                      <dl>
+                        <dt class="text-sm font-medium text-gray-500 truncate">出席</dt>
+                        <dd class="text-lg font-medium text-gray-900">
+                          <%= attendances.filter { |a| a.status == "出席" }.count %>件
+                        </dd>
+                      </dl>
+                    </div>
                   </div>
                 </div>
-                <div class="ml-5 w-0 flex-1">
-                  <dl>
-                    <dt class="text-sm font-medium text-gray-500 truncate">出席</dt>
-                    <dd class="text-lg font-medium text-gray-900">
-                      <%= @attendances.where(status: "出席").count %>件
-                    </dd>
-                  </dl>
+              </div>
+
+              <div class="bg-white overflow-hidden shadow rounded-lg">
+                <div class="p-5">
+                  <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                      <div class="w-8 h-8 bg-red-500 rounded-md flex items-center justify-center">
+                        <span class="text-white text-sm">✗</span>
+                      </div>
+                    </div>
+                    <div class="ml-5 w-0 flex-1">
+                      <dl>
+                        <dt class="text-sm font-medium text-gray-500 truncate">欠席</dt>
+                        <dd class="text-lg font-medium text-gray-900">
+                          <%= attendances.filter { |a| a.status == "欠席" }.count %>件
+                        </dd>
+                      </dl>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bg-white overflow-hidden shadow rounded-lg">
+                <div class="p-5">
+                  <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                      <div class="w-8 h-8 bg-yellow-500 rounded-md flex items-center justify-center">
+                        <span class="text-white text-sm">⏰</span>
+                      </div>
+                    </div>
+                    <div class="ml-5 w-0 flex-1">
+                      <dl>
+                        <dt class="text-sm font-medium text-gray-500 truncate">遅刻</dt>
+                        <dd class="text-lg font-medium text-gray-900">
+                          <%= attendances.filter { |a| a.status == "遅刻" }.count %>件
+                        </dd>
+                      </dl>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bg-white overflow-hidden shadow rounded-lg">
+                <div class="p-5">
+                  <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                      <div class="w-8 h-8 bg-orange-500 rounded-md flex items-center justify-center">
+                        <span class="text-white text-sm">🏃</span>
+                      </div>
+                    </div>
+                    <div class="ml-5 w-0 flex-1">
+                      <dl>
+                        <dt class="text-sm font-medium text-gray-500 truncate">早退</dt>
+                        <dd class="text-lg font-medium text-gray-900">
+                          <%= attendances.filter { |a| a.status == "早退" }.count %>件
+                        </dd>
+                      </dl>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-
-          <div class="bg-white overflow-hidden shadow rounded-lg">
-            <div class="p-5">
-              <div class="flex items-center">
-                <div class="flex-shrink-0">
-                  <div class="w-8 h-8 bg-red-500 rounded-md flex items-center justify-center">
-                    <span class="text-white text-sm">✗</span>
-                  </div>
-                </div>
-                <div class="ml-5 w-0 flex-1">
-                  <dl>
-                    <dt class="text-sm font-medium text-gray-500 truncate">欠席</dt>
-                    <dd class="text-lg font-medium text-gray-900">
-                      <%= @attendances.where(status: "欠席").count %>件
-                    </dd>
-                  </dl>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="bg-white overflow-hidden shadow rounded-lg">
-            <div class="p-5">
-              <div class="flex items-center">
-                <div class="flex-shrink-0">
-                  <div class="w-8 h-8 bg-yellow-500 rounded-md flex items-center justify-center">
-                    <span class="text-white text-sm">⏰</span>
-                  </div>
-                </div>
-                <div class="ml-5 w-0 flex-1">
-                  <dl>
-                    <dt class="text-sm font-medium text-gray-500 truncate">遅刻</dt>
-                    <dd class="text-lg font-medium text-gray-900">
-                      <%= @attendances.where(status: "遅刻").count %>件
-                    </dd>
-                  </dl>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="bg-white overflow-hidden shadow rounded-lg">
-            <div class="p-5">
-              <div class="flex items-center">
-                <div class="flex-shrink-0">
-                  <div class="w-8 h-8 bg-orange-500 rounded-md flex items-center justify-center">
-                    <span class="text-white text-sm">🏃</span>
-                  </div>
-                </div>
-                <div class="ml-5 w-0 flex-1">
-                  <dl>
-                    <dt class="text-sm font-medium text-gray-500 truncate">早退</dt>
-                    <dd class="text-lg font-medium text-gray-900">
-                      <%= @attendances.where(status: "早退").count %>件
-                    </dd>
-                  </dl>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <% end %>
       <% else %>
         <div class="text-center py-12">
           <div class="mx-auto h-12 w-12 text-gray-400">

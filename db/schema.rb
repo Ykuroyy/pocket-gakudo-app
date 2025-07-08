@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_07_07_093909) do
+ActiveRecord::Schema[8.0].define(version: 2025_07_08_051349) do
   create_table "attendances", force: :cascade do |t|
     t.string "child_name"
     t.string "status"
@@ -20,6 +20,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_07_093909) do
     t.datetime "updated_at", null: false
     t.string "child_first_name"
     t.string "child_last_name"
+    t.string "parent_name"
   end
 
   create_table "users", force: :cascade do |t|
