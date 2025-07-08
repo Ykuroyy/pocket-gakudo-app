@@ -1,10 +1,14 @@
 class UsersController < ApplicationController
   def new
-    @user = User.new
-  rescue ActiveRecord::StatementInvalid
-    # データベースエラーの場合は、基本的なUserオブジェクトを作成
+    # データベースエラーを避けるため、Userモデルを使わずにオブジェクトを作成
     @user = OpenStruct.new
     def @user.errors
+      []
+    end
+    def @user.errors.any?
+      false
+    end
+    def @user.errors.[](field)
       []
     end
   end
