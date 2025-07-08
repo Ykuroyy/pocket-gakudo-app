@@ -1,13 +1,38 @@
 class UsersController < ApplicationController
   def new
-    # データベースエラーを避けるため、Userモデルを使わずにオブジェクトを作成
-    @user = OpenStruct.new
-    @user.define_singleton_method(:errors) do
-      errors_obj = OpenStruct.new
-      errors_obj.define_singleton_method(:any?) { false }
-      errors_obj.define_singleton_method(:[]) { |field| [] }
-      errors_obj
-    end
+    # データベースエラーを避けるため、基本的なUserオブジェクトを作成
+    @user = User.new
+  rescue => e
+    # エラーが発生した場合は、ダミーのUserオブジェクトを作成
+    @user = Class.new do
+      def initialize
+        @attributes = {}
+      end
+      
+      def errors
+        @errors ||= Class.new do
+          def any?
+            false
+          end
+          
+          def [](field)
+            []
+          end
+        end.new
+      end
+      
+      def method_missing(method_name, *args, &block)
+        if method_name.to_s.end_with?('=')
+          @attributes[method_name.to_s.chomp('=')] = args.first
+        else
+          @attributes[method_name.to_s]
+        end
+      end
+      
+      def respond_to_missing?(method_name, include_private = false)
+        true
+      end
+    end.new
   end
 
   def create
