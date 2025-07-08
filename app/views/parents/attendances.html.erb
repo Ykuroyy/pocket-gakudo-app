@@ -100,8 +100,14 @@
                           <%= format_japanese_time(attendance.created_at) %>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                          <%= link_to "内容を変更", edit_attendance_path(attendance), 
-                                      class: "text-blue-600 hover:text-blue-800 font-medium" %>
+                          <div class="flex space-x-2">
+                            <%= link_to "内容を変更", edit_attendance_path(attendance), 
+                                        class: "text-blue-600 hover:text-blue-800 font-medium" %>
+                            <% if attendance.history_records.any? %>
+                              <%= link_to "変更履歴", history_attendance_path(attendance), 
+                                          class: "text-green-600 hover:text-green-800 font-medium" %>
+                            <% end %>
+                          </div>
                         </td>
                       </tr>
                     <% end %>

@@ -18,14 +18,14 @@
             </h3>
             <div class="mt-2 text-sm text-yellow-700">
               <p><%= @existing_attendance.date.strftime('%m月%d日') %>の出欠席連絡は既に送信済みです。</p>
-              <p class="mt-1">現在の内容：<%= @existing_attendance.status %> - <%= @existing_attendance.message.presence || "メッセージなし" %></p>
+              <p class="mt-1">変更する場合は該当の日の行の編集ボタンから編集してください。</p>
             </div>
           </div>
         </div>
       </div>
     <% end %>
     
-    <%= form_with model: @attendance, local: true, class: "space-y-4" do |form| %>
+    <%= form_with model: @attendance, url: attendances_path, method: :post, local: true, class: "space-y-4" do |form| %>
       <% if @attendance.errors.any? %>
         <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
           <ul class="list-disc list-inside">
@@ -82,19 +82,21 @@
       <div class="pt-4 space-y-3">
         <% if @show_update_option && @existing_attendance %>
           <div class="bg-blue-50 border border-blue-200 rounded-md p-4">
-            <h4 class="text-sm font-medium text-blue-800 mb-2">選択してください</h4>
-            <p class="text-sm text-blue-700 mb-3">既存の送信を変更するか、そのままにするかを選択してください。</p>
-            <%= link_to "変更せずに閉じる", attendances_index_path, 
-                        class: "inline-block bg-gray-600 text-white py-2 px-4 rounded-md font-medium hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2" %>
+            <h4 class="text-sm font-medium text-blue-800 mb-2">出欠席一覧を確認してください</h4>
+            <p class="text-sm text-blue-700 mb-3">既存の送信があるため、出欠席一覧から該当の日付の編集ボタンを使用してください。</p>
+            <%= link_to "出欠席一覧に戻る", parent_attendances_path, 
+                        class: "inline-block bg-blue-600 text-white py-2 px-4 rounded-md font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2" %>
           </div>
+        <% else %>
+          <%= form.submit "送信する", class: "w-full bg-blue-600 text-white py-3 px-4 rounded-md font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2" %>
         <% end %>
-        
-        <%= form.submit "この情報で送信し直す", class: "w-full bg-blue-600 text-white py-3 px-4 rounded-md font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2" %>
       </div>
     <% end %>
 
-    <div class="mt-6 text-center">
-      <%= link_to "出欠席一覧を見る", attendances_index_path, class: "text-blue-600 hover:text-blue-800 text-sm" %>
-    </div>
+    <% unless @show_update_option && @existing_attendance %>
+      <div class="mt-6 text-center">
+        <%= link_to "出欠席一覧に戻る", parent_attendances_path, class: "text-blue-600 hover:text-blue-800 text-sm" %>
+      </div>
+    <% end %>
   </div>
 </div>

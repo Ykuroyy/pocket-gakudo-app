@@ -104,9 +104,15 @@
                         <%= format_japanese_time(attendance.created_at) %>
                       </td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                      <button onclick="showParentDetails('<%= parent_name %>')" class="text-blue-600 hover:text-blue-800">
-                        詳細を見る
-                      </button>
+                      <div class="flex space-x-2">
+                        <button onclick="showParentDetails('<%= parent_name %>')" class="text-blue-600 hover:text-blue-800">
+                          詳細を見る
+                        </button>
+                        <% if attendance.history_records.any? %>
+                          <%= link_to "変更履歴", history_attendance_path(attendance), 
+                                      class: "text-green-600 hover:text-green-800" %>
+                        <% end %>
+                      </div>
                     </td>
                   </tr>
                 <% end %>
@@ -225,11 +231,11 @@
           </div>
           <div>
             <label class="block text-sm font-medium text-gray-700">電話番号</label>
-            <p class="mt-1 text-sm text-gray-900" id="parentPhone">090-1234-5678</p>
+            <p class="mt-1 text-sm text-gray-900" id="parentPhone"></p>
           </div>
           <div>
             <label class="block text-sm font-medium text-gray-700">メールアドレス</label>
-            <p class="mt-1 text-sm text-gray-900" id="parentEmail">parent@example.com</p>
+            <p class="mt-1 text-sm text-gray-900" id="parentEmail"></p>
           </div>
         </div>
         <div class="mt-6">
@@ -245,6 +251,20 @@
     function showParentDetails(parentName) {
       document.getElementById('modalTitle').textContent = parentName + 'さんの詳細';
       document.getElementById('parentName').textContent = parentName;
+      
+      // 保護者の連絡先情報を取得
+      fetch(`/admins/parent_info?parent_name=${encodeURIComponent(parentName)}`)
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById('parentPhone').textContent = data.phone || '登録されていません';
+          document.getElementById('parentEmail').textContent = data.email || '登録されていません';
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          document.getElementById('parentPhone').textContent = '取得できませんでした';
+          document.getElementById('parentEmail').textContent = '取得できませんでした';
+        });
+      
       document.getElementById('parentModal').classList.remove('hidden');
     }
 

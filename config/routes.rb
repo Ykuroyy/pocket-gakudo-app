@@ -16,11 +16,13 @@ Rails.application.routes.draw do
   get "admins/dashboard", to: "admins#dashboard", as: :admin_dashboard
   get "admins/attendances", to: "admins#attendances", as: :admin_attendances
   get "admins/all_attendances", to: "admins#all_attendances", as: :admin_all_attendances
+  get "admins/parent_info", to: "admins#parent_info", as: :admin_parent_info
 
   # 出欠席連絡のルート（保護者用）
   resources :attendances, except: [:show, :destroy] do
     member do
       patch :update_existing
+      get :history, as: :history
     end
   end
   get "attendances", to: "attendances#index", as: :attendances_index
