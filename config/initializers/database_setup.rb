@@ -4,7 +4,7 @@ if Rails.env.production?
     begin
       # マイグレーションを実行
       puts "Running database migrations..."
-      ActiveRecord::Migration.migrate
+      ActiveRecord::Tasks::DatabaseTasks.migrate
       puts "Database migrations completed successfully!"
     rescue => e
       puts "Migration error: #{e.message}"
