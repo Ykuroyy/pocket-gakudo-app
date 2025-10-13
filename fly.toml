@@ -1,0 +1,39 @@
+# fly.toml app configuration file generated for pocket-gakudo-app
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+
+app = "pocket-gakudo-app"
+primary_region = "nrt" # Tokyo region for better performance in Japan
+
+[build]
+
+[http_service]
+  internal_port = 3000
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ["app"]
+
+[[http_service.checks]]
+  interval = "10s"
+  grace_period = "5s"
+  method = "get"
+  path = "/"
+  protocol = "http"
+  timeout = "2s"
+  tls_skip_verify = false
+
+[env]
+  RAILS_ENV = "production"
+  RACK_ENV = "production"
+
+[[vm]]
+  memory = "256mb"
+  cpu_kind = "shared"
+  cpus = 1
+
+[processes]
+  app = "bundle exec puma -C config/puma.rb"
+
+[deploy]
+  release_command = "bundle exec rails db:migrate"
